@@ -1,9 +1,9 @@
 ---
 layout: post
-title: You're up and running!
+title: Lets Start !!
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+My objective is to keep this blog simple and informative. I would be posting my experience with various devops technologies that I learn and use daily to solve problem at work or otherwise. As I get time I intent to post weekly.
 
 ![_config.yml]({{ site.baseurl }}/images/config.png)
 
