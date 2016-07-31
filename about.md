@@ -1,12 +1,8 @@
 ---
 layout: page
-title: About
+title: About ME!!
 permalink: /about/
 ---
-
-Some information about you!
-
-### More Information
 
 Prince of Persia, my first memory of using a personal computer, those monochrome 8 bit visuals created an everlasting print in my memory. Gaming got me hooked to computers during my school days, gradually I started exploring gwbasic, C programming during my diploma college, tweaking HIMEM.SYS on DOS/WIN3.11 486 machine to run games, assembling machines for pocket money while in college. Troubleshooting hardware, operating system issues fueled my curiousity further to explore newer computer hardware, gaming gadgets, mobiles and their operating systems - Symbian OS, Windows Mobile 6.1, Android. I am an Android fanboy since Android Cupcake which I successfully booted it on my Windows Xperia1 using an HTC ROM. 
 
