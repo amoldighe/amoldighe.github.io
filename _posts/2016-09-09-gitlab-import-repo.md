@@ -1,3 +1,5 @@
+{{ page.content | markdownify }}
+
 ---
 layout: post
 title: Gitlab Import Repository
