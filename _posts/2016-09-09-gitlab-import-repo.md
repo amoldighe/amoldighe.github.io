@@ -1,5 +1,3 @@
-{{ page.content | markdownify }}
-
 ---
 layout: post
 title: Gitlab Import Repository
@@ -70,3 +68,5 @@ Processing root/gittest.git
 Done!
 
 Congratulations you have migrated gitlab repository.
+
+{{ page.content | markdownify }}
