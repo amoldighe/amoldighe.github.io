@@ -68,5 +68,3 @@ Processing root/gittest.git
 Done!
 
 Congratulations you have migrated gitlab repository.
-
-{{ page.content | markdownify }}
