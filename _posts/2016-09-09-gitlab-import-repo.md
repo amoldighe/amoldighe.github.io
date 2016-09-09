@@ -14,9 +14,11 @@ Challenge : Migrate gitlab project along with all the project commits.
 Solution : 
 
 * Take backup of all projects on old gitlab server on to any development host.
+
 ```
 git clone --mirror git@oldgitlab.server:me/Consul.git
 ```
+
 This will create a clone of old gitlab repo 'Consul' - with files, commits i.e. it creates a bare repository.
 
 * Copy the Consul.git directory to the new gitlab server under the following directory path - /var/opt/gitlab/git-data/repositories/root/
