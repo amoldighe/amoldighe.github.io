@@ -95,15 +95,15 @@ List the snmp queries to be used while adding graphs for interface
 
 List the snmp field type for interface graphing
 
-> (jpe2)amold@consul-03:~$ sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --list-snmp-fields
+> sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --list-snmp-fields
 
 List all the interfaces with IP
 
-> (jpe2)amold@consul-03:~$ sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
+> sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
 
 List all the interfaces with IP
 
-> (jpe2)amold@consul-03:~$ sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
+> sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
 
 Add interface graph creation to Cacti dashboard
 
