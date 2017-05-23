@@ -1,6 +1,6 @@
 * **Cacti Server Installation** 
 
-> sudo apt-get install cacti cacti-spine rrdtool
+>  sudo apt-get install cacti cacti-spine rrdtool
 
 Cacti dashboard should be available on the server IP.
 
