@@ -56,7 +56,7 @@ Run below command to fetch the hostname - IP from file and add to cacti dashboar
 
 * **Addition of cpu, memory, load average graphs** (**script method**)
 
->     bash ./[cacti-cpu-mem-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-cpu-mem-graph.sh)    host-id-list-file
+> bash ./[cacti-cpu-mem-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-cpu-mem-graph.sh)    host-id-list-file
 
 **OR**
 
@@ -83,7 +83,7 @@ Use the below comands for genarating graphs for cpu, load average, memory using 
 
 * **Addition of interface graphs** (***script method***)
 
->     bash ./[cacti-interface-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-interface-graph.sh)   host-id-list-file
+> bash ./[cacti-interface-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-interface-graph.sh)   host-id-list-file
 
 **OR**
 
