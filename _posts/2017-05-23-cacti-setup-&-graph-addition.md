@@ -42,10 +42,11 @@ The below ***for*** loop along with ***salt*** will allow to execute commands on
 
 Login to cacti server, to add all the clients to cacti dashboard.
 
-Get the list of client machine name & IP address in a file in following format - 
-    	clientnode1 <space> 192.168.0.1
-    	clientnode2 <space> 192.168.0.2
-    	clientnode3 <space> 192.168.0.3
+Get the list of client machine name & IP address in a file in following format :
+
+>    	clientnode1 <space> 192.168.0.1
+>    	clientnode2 <space> 192.168.0.2
+>    	clientnode3 <space> 192.168.0.3
 
 Run below command to fetch the hostname - IP from file and add to cacti dashboard by piping to shell
 
