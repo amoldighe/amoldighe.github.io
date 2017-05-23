@@ -1,6 +1,6 @@
 * **Cacti Server Installation** 
 
->  sudo apt-get install cacti cacti-spine rrdtool
+> sudo apt-get install cacti cacti-spine rrdtool
 
 Cacti dashboard should be available on the server IP.
 
@@ -44,9 +44,9 @@ Login to cacti server, to add all the clients to cacti dashboard.
 
 Get the list of client machine name & IP address in a file in following format :
 
->    	clientnode1 <space> 192.168.0.1
->    	clientnode2 <space> 192.168.0.2
->    	clientnode3 <space> 192.168.0.3
+>  clientnode1 <space> 192.168.0.1
+>  clientnode2 <space> 192.168.0.2
+>  clientnode3 <space> 192.168.0.3
 
 Run below command to fetch the hostname - IP from file and add to cacti dashboard by piping to shell
 
@@ -56,7 +56,7 @@ Run below command to fetch the hostname - IP from file and add to cacti dashboar
 
 * **Addition of cpu, memory, load average graphs** (**script method**)
 
-> bash ./[cacti-cpu-mem-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-cpu-mem-graph.sh)    host-id-list-file
+>     bash ./[cacti-cpu-mem-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-cpu-mem-graph.sh)    host-id-list-file
 
 **OR**
 
@@ -83,7 +83,7 @@ Use the below comands for genarating graphs for cpu, load average, memory using 
 
 * **Addition of interface graphs** (***script method***)
 
-> bash ./[cacti-interface-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-interface-graph.sh)   host-id-list-file
+>     bash ./[cacti-interface-graph.sh](https://github.com/amoldighe/cacti-setup-add-graph/blob/master/cacti-interface-graph.sh)   host-id-list-file
 
 **OR**
 
