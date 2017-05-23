@@ -1,3 +1,14 @@
+---
+layout: post
+title:  "Cacti Setup & Graphing"
+date:   2017-05-23
+tags:
+  - cacti
+  - shell
+  - graphs
+  - monitoring
+---
+
 * **Cacti Server Installation** 
 
 > sudo apt-get install cacti cacti-spine rrdtool
