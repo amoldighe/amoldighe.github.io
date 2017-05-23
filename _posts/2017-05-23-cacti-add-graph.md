@@ -91,63 +91,18 @@ Use the below comands for genarating graphs for cpu, load average, memory using 
 List the snmp queries to be used while adding graphs for interface 
 
 > sudo php -q /usr/share/cacti/cli/add_graphs.php --list-snmp-queries
->
-> Known SNMP Queries:(id, name) 
-> 1       SNMP - Interface Statistics 
-> 2       ucd/net -  Get Monitored Partitions
-> 3       Karlnet - Wireless Bridge Statistics 
-> 4       Netware - Get Available Volumes 
-> 6       Unix - Get Mounted Partitions 
-> 7       Netware - Get Processor Information 
-> 8       SNMP - Get Mounted Partitions 
-> 9       SNMP - Get Processor Information
-
 
 List the snmp field type for interface graphing
 
-> (jpe2)amold@consul-03:~$ sudo php -q
-> /usr/share/cacti/cli/add_graphs.php --host-id=47 --list-snmp-fields
->
-> Known SNMP Fields for host-id 47: (name) 
-> hrStorageAllocationUnits
-> hrStorageDescr 
-> hrStorageIndex 
-> ifAlias 
-> ifDescr 
-> ifHighSpeed 
-> ifHwAddr
-> ifIndex 
-> ifIP 
-> ifName 
-> ifOperStatus 
-> ifSpeed 
-> ifType
+> (jpe2)amold@consul-03:~$ sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --list-snmp-fields
 
 List all the interfaces with IP
 
-> (jpe2)amold@consul-03:~$ sudo php -q
-> /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP
-> --list-snmp-values 
-> 
->Known values for ifIP for host 47: (name)
-> 10.144.166.171
-> 127.0.0.1
-> 192.168.0.120
-> 192.168.2.171
-> 192.168.4.171
+> (jpe2)amold@consul-03:~$ sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
 
 List all the interfaces with IP
 
-> (jpe2)amold@consul-03:~$ sudo php -q
-> /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP
-> --list-snmp-values 
-> 
-> Known values for ifIP for host 47: (name)
-> 10.144.166.171
-> 127.0.0.1
-> 192.168.0.120
-> 192.168.2.171
-> 192.168.4.171
+> (jpe2)amold@consul-03:~$ sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
 
 Add interface graph creation to Cacti dashboard
 
