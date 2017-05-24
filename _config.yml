@@ -8,8 +8,9 @@ name: AMOL DIGHE
 # Short bio or description (displayed in the header)
 description: Cloud Devops Engineer
 
+header-img: 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://amoldighe.github.io/images/render_batman.png
+avatar: images/render_batman.png
 
 #
 # Flags below are optional
