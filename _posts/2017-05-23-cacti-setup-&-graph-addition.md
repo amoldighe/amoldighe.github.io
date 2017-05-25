@@ -9,6 +9,8 @@ tags:
   - monitoring
 ---
 
+I am using Cacti for creating graphs for cpu, memory, load average and network traffic for various private cloud nodes. We have multiple cloud environment and have 200+ node for each cloud. Due to the large number of nodes, its time consuming to discover each node in Cacti dashboard and configure graph through dashboard. Below is my solution to setup Cacti nodes, discover them and create graphs for same. 
+
 * **Cacti Server Installation** 
 
 > sudo apt-get install cacti cacti-spine rrdtool
