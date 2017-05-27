@@ -24,7 +24,7 @@ Verify the hostname settings in /etc/postfix/main.cf
 > myhostname = gitlab
  
 Check if user nobody is present in /etc/passwd
-> ubuntu@gitlab:~$ sudo less /etc/passwd | grep nobody
+> cat /etc/passwd | grep nobody
 
 If not present add the below line to /etc/passwd
 ```
