@@ -19,16 +19,19 @@ gitlab postfix/sendmail[899]: fatal: file /etc/postfix/main.cf: parameter defaul
 **Solution :**
 
 Verify the hostname settings in /etc/postfix/main.cf
+```
+cat /etc/postfix/main.cf | grep hostname
+myhostname = gitlab
+```
 
-> cat /etc/postfix/main.cf | grep hostname
->
-> myhostname = gitlab
- 
 Check if user nobody is present in /etc/passwd
 
-> cat /etc/passwd | grep nobody
+```
+cat /etc/passwd | grep nobody
+```
 
 If not present add the below line to /etc/passwd
+
 ```
 nobody:x:99:99:Nobody:/:/sbin/nologin
 ```
