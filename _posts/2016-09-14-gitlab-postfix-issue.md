@@ -14,9 +14,9 @@ Please note the Gitlab setup I have is on a VM on my Private Cloud environment a
 
 
 * **Issue: Error while starting postfix**
+
 ```
 gitlab postfix/sendmail[899]: fatal: file /etc/postfix/main.cf: parameter default_privs: unknown user name value: nobody
-
 ```
  
 **Solution :**
@@ -49,7 +49,6 @@ Apply the configuration for postfix, execute below commands
 
 ```
 Jul 14 17:12:03 gitlab postfix/trivial-rewrite[16639]: fatal: bad boolean configuration: append_dot_mydomain = gitlab.localhost
-
 ```
 
 **Solution :**
@@ -68,7 +67,6 @@ append_dot_mydomain = no
 
 ```
 Jul 14 17:17:14 gitlab postfix/smtp[17151]: 7262B206F1: to=<amol.dighe@xxxxx.com>, relay=10.130.0.55[10.130.0.55]:25, delay=39, delays=39/0.01/0.01/0.03, dsn=4.1.8, status=deferred (host 10.130.0.55[10.130.0.55] said: 450 4.1.8 <ubuntu@gitlab.localhost>: Sender address rejected: Domain not found (in reply to RCPT TO command))
-
 ```
 
 **Solution :**
@@ -88,7 +86,6 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
-
 ```
  
 As we are using a relay host or another mailhost to send our mails, its IP address need to be set in ‘relayhost’ parameter.
