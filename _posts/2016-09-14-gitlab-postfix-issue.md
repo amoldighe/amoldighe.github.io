@@ -3,10 +3,8 @@ layout: post
 title:  "Gitlab - postfix setup issues"
 date:   2016-09-14
 tags:
-  - cacti
-  - shell
-  - graphs
-  - monitoring
+  - gitlab
+  - postfix
 ---
 
 This is my effort to continue to record the issues I came across while setting up Gitlab for my Devops team members.  
