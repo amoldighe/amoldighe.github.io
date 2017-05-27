@@ -23,17 +23,14 @@ Verify the hostname settings in /etc/postfix/main.cf
 
 > cat /etc/postfix/main.cf | grep hostname
 > myhostname = gitlab
-
  
 Check if user nobody is present in /etc/passwd
-
 > ubuntu@gitlab:~$ sudo less /etc/passwd | grep nobody
 
 If not present add the line **nobody:x:99:99:Nobody:/:/sbin/nologin** to /etc/passwd
 
 
-Apply the configuration for postfix, execute below commands 
-
+Apply the configuration for postfix, execute below commands: 
 > newaliases
 >
 > apt-get install –f
@@ -52,11 +49,9 @@ Jul 14 17:12:03 gitlab postfix/trivial-rewrite[16639]: fatal: bad boolean config
 **Solution :**
  
 Verify the hostname settings in /etc/postfix/main.cf
-
 > vi /etc/postfix/main.cf
 
 change the value for append_dot_mydomain to “no”
-
 > cat /etc/postfix/main.cf | grep append_dot_mydomain
 append_dot_mydomain = no
 
@@ -93,23 +88,18 @@ Error indicates that relay is reachable but sender address is rejected by relay,
 This is a case where the host is not in a qualified domain and the user email id configured on the host is not a valid email id. A work around is to send mail from a valid email id which the mail server can verify and proceed further with sending the mail.
 
 Open your main.cf file
-
 > vi /etc/postfix/main.cf
 
 Append following parameter
-
 >smtp_generic_maps = hash:/etc/postfix/generic
 
 Add a entry for ubuntu@gitlab.localhost mapping it against a vaild email id e.g. no-reply@xxxxx.com
-
 > vi /etc/postfix/generic
 > ubuntu@gitlab.localhost  no-reply@xxxxx.com
 
 Save and close the file. Create or update generic postfix table:
-
 > postmap /etc/postfix/generic
 
 Restart postfix
-
 > /etc/init.d/postfix restart
 
