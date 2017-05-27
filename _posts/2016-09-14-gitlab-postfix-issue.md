@@ -7,8 +7,7 @@ tags:
   - postfix
 ---
 
-This is my effort to continue to record the issues I came across while setting up Gitlab for my Devops team members.  
-Please note the Gitlab setup I have is on a VM on my Private Cloud environment and the mail server I am using is a physical box in one of our datacenters. 
+This is my effort to continue to record the issues I came across while setting up Gitlab for my Devops team members. Please note the Gitlab setup I have is on a VM on my Private Cloud environment and the mail server I am using is a physical box in one of our datacenters. 
 
 
 * **Issue: Error while starting postfix**
