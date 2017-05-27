@@ -26,8 +26,10 @@ Verify the hostname settings in /etc/postfix/main.cf
 Check if user nobody is present in /etc/passwd
 > ubuntu@gitlab:~$ sudo less /etc/passwd | grep nobody
 
-If not present add the line **nobody:x:99:99:Nobody:/:/sbin/nologin** to /etc/passwd
-
+If not present add the below line to /etc/passwd
+```
+nobody:x:99:99:Nobody:/:/sbin/nologin
+```
 
 Apply the configuration for postfix, execute below commands: 
 > newaliases
