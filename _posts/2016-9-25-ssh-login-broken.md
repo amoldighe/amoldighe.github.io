@@ -22,7 +22,7 @@ To know more about the root cause of the issue, refer to - http://www.held.org.i
 
 Solution using the cipher specification using "-c cipher_spec" with your SSH connection, the default is 3des incase -c is not used.
 
-<img src="{{ site.baseurl }}/img/ssh-cipher-resolve.png">
+<img src="{{ site.baseurl }}/img/ssh-cipher.png">
 
 To avoid specifying cipher specification for every SSH connection, add the same to $HOME/.ssh/config OR /etc/ssh/ssh_config 
 
