@@ -9,7 +9,7 @@ In this post, I will try to address:
 * Consul DNS setup 
 * Consul DNS forward using dnsmasq
 
-As a default behaviour, Consul will listen on 127.0.0.1:8600 for DNS queries i.e. on the localhost where consul agent is running. The consul DNS service works in the top level domain of “consul.”. The logical concept of data centers is used to subdivide the domain. The datacenter must be configured for each Consul service. Each datacenter contains two namespaces - “nodes” and “services”. Every node is automatically registered with its name in the nodes.<datacenter>.consul zone and services live in the services.<datacenter>.consul.zone. 
+As a default behaviour, Consul will listen on 127.0.0.1:8600 for DNS queries i.e. on the localhost where consul agent is running. The consul DNS service works in the top level domain of “consul.”. The logical concept of data centers is used to subdivide the domain. The datacenter must be configured for each Consul service. Each datacenter contains two namespaces - “nodes” and “services”. Every node is automatically registered with its name in the nodes.datacenter.consul zone and services live in the services.datacenter.consul.zone. 
 
 I have a consul cluster setup of 3 servers & 2 clients
 
