@@ -12,6 +12,7 @@ The curious case of Broken SSH.
 While accessing one of my private cloud server I came across an issue where the SSH connectivity was abruptly broken.
 What puzzeled me more was that telnet was working to the same server.
 
+<img src="{{ site.baseurl }}/img/ssh-vpn-issue.png">
 ![ssh-vpn-issue][/img/ssh-vpn-issue.png]
 
 On running SSH in verbose mode the following messages related to aes cipher was encountered. 
