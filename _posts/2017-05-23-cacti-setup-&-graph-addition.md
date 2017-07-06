@@ -45,7 +45,7 @@ The below ***for*** loop along with ***salt*** will allow to execute commands on
 > 
 > salt 'cpu*' cmd.run 'service snmpd start'
 
-* **Incase you have firewall on nodes, add to the following rules to iptables**
+* **Incase you have firewall on nodes, add to the following rules to iptables to allow UDP communication for SNMP**
 
 > iptables -I INPUT -p udp -m udp --dport 161 -j ACCEPT
 > 
@@ -56,9 +56,9 @@ The below ***for*** loop along with ***salt*** will allow to execute commands on
 
  * **Cacti client node addition to Cacti Dashboard :**
 
-Login to cacti server, to add all the clients to cacti dashboard.
+Login to cacti server, to add the clients Hostname and Host IP to cacti dashboard.
 
-Get the list of client machine name & IP address in a file in following format :
+Get the list of client hostname & host IP address in a file in following format :
 
 >  clientnode1 <space> 192.168.0.1
 > 
@@ -72,6 +72,8 @@ Run below command to fetch the hostname - IP from file and add to cacti dashboar
 > less /tmp/control-nodes | awk '{print "sudo php -q
 > /usr/share/cacti/cli/add_device.php --description=" \$1 " --ip="$2 "
 > --avail=snmp --template=9 --community=jiocloudservices"}' | sh
+
+This should add the host to cacti dashboard and assign a unique id, which will be used for addition of graphs for cpu, memory, load and interface.
 
 * **Addition of cpu, memory, load average graphs** (**script method**)
 
@@ -115,10 +117,6 @@ List the snmp queries to be used while adding graphs for interface
 List the snmp field type for interface graphing
 
 > sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --list-snmp-fields
-
-List all the interfaces with IP
-
-> sudo php -q /usr/share/cacti/cli/add_graphs.php --host-id=47 --snmp-field=ifIP --list-snmp-values 
 
 List all the interfaces with IP
 
