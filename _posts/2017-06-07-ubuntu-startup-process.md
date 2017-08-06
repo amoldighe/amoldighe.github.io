@@ -72,9 +72,11 @@ Here's an example of a startup configuration file for Consul, stored @ /etc/init
 
 The configuration file defines the job description, runleve to start and stop the script, exec to execute a command.
 Following commands are used for :
-> - starting consul agent - start consul
-> - stopping consul agent - stop consul
-> - checking status of consul agent - status consul
+> starting consul agent - start consul
+>
+> stopping consul agent - stop consul
+>
+> checking status of consul agent - status consul
 
 
 * **Systemd**
