@@ -106,7 +106,7 @@ Here's an example of consul client added to systemd startup on Ubuntu 16.04, loc
 To manage services on a systemd enabled server, our main tool is the systemctl command.
 
 > systemctl start consul.service
-> 
+>
 > systemctl status consul.service
 > 
 > systemctl stop consul.service
