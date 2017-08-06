@@ -72,9 +72,9 @@ Here's an example of a startup configuration file for Consul, stored @ /etc/init
 
 The configuration file defines the job description, runleve to start and stop the script, exec to execute a command.
 Following commands are used for :
-    * starting consul agent - start consul
-    * stopping consul agent - stop consul
-    * checking status of consul agent - status consul
+>-starting consul agent - start consul
+>-stopping consul agent - stop consul
+>-checking status of consul agent - status consul
 
 
 * **Systemd**
@@ -133,12 +133,12 @@ After edit to load the new configuration, reload the service unit file
 
 * ***Helpful Bookmarks*** 
 
-[https://www.debuntu.org/how-to-managing-services-with-update-rc-d/]
+[https://www.debuntu.org/how-to-managing-services-with-update-rc-d/](https://www.debuntu.org/how-to-managing-services-with-update-rc-d/)
 
-[https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it]
+[https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it](https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it)
 
-[https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal]
+[https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal](https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal)
 
-[https://wiki.ubuntu.com/SystemdForUpstartUsers]
+[https://wiki.ubuntu.com/SystemdForUpstartUsers](https://wiki.ubuntu.com/SystemdForUpstartUsers)
 
 
