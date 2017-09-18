@@ -121,7 +121,7 @@ Create a configuration file /etc/consul.d/client/config.json with the below line
     "enable_syslog" : true,
     "bind_addr": "192.168.12.96",
     "start_join" : ["192.168.12.161", "192.168.12.162", "192.168.12.163"],
-    "node_name": "mtr-01",
+    "node_name": "client-01",
 }
 ```
 
@@ -132,6 +132,7 @@ Consul store the data required by serf & raft protocol in their respective direc
 * Autostart consul bootstrap on Ubuntu 14.04 
 On 14.04 I am using upstart configuration to start consul on start up using the below configuration on server side.
 Setup a server configuration file   -   /etc/init/consul.conf
+
 
 ```
 # Consul Agent (Upstart unit)
@@ -147,6 +148,7 @@ kill timeout 10
 * Autostart consul server on Ubuntu 14.04 
 Setup a server configuration file   -   /etc/init/consul.conf
 
+
 ```
 # Consul Agent (Upstart unit)
 description "Consul Agent"
@@ -161,6 +163,7 @@ kill timeout 10
 * Autostart consul client on Ubuntu 14.04 
 Setup a client configuration file   -   /etc/init/consul.conf
 
+
 ```
 # Consul Agent (Upstart unit)
 description "Consul Agent"
@@ -174,6 +177,7 @@ kill timeout 10
 
 * Autostart consul client on Ubuntu 16.04 
 Setup a client configuration file  - /etc/systemd/system/consul-client.service
+
 
 ```
 [Unit]
@@ -194,18 +198,24 @@ WantedBy=multi-user.target
 ```
 
 * Manage Consul on Ubuntu 14.04 using commands 
+
 ```
 start consul
 stop consul
 status consul
 ```
+
 * Manage Consul on Ubuntu 16.04 using commands 
+
 ```
 systemctl status consul-client.service
 systemctl start consul-client.service
 systemctl stop consul-client.service
 ```
+
 Starting consul should expose the service over following ports :
+
+
 ```
 (jse2)root@consul-02:/etc/systemd/system# netstat -ntlp | grep consul
 tcp        0      0 192.168.12.162:8300     0.0.0.0:*               LISTEN      21996/consul
@@ -214,15 +224,21 @@ tcp        0      0 192.168.12.162:8302     0.0.0.0:*               LISTEN      
 tcp        0      0 127.0.0.1:8500          0.0.0.0:*               LISTEN      21996/consul
 tcp        0      0 127.0.0.1:8600          0.0.0.0:*               LISTEN      21996/consul
 ```
+
 dns - The DNS server,  Default 8600. 
+
 http - The HTTP API,  Default 8500. 
+
 serf_lan - The Serf LAN port. Default 8301. 
+
 serf_wan - The Serf WAN port. Default 8302. 
+
 server - Server RPC address. Default 8300. 
 
 In case you have IPTABLES enabled on your consul nodes, see to it that you add the above ports 
 
-Verify the server cluster 
+* Verify the server cluster 
+
 
 ```
 root@consul-01:/etc/consul.d/bootstrap# consul members | grep server
@@ -231,9 +247,9 @@ consul-02  192.168.12.162:8301  alive   server  0.9.0  2         dc1
 consul-03  192.168.12.163:8301  alive   server  0.9.0  2         dc1
 ```
 
-* Consul for Monitoring
+* Monitoring setup
 
-Define the check in config.json for each of the host (bootstrap, server, client ) which need to be monitored.
+Define the monitoring check in config.json for each of the host (bootstrap, server, client ) which need to be monitored.
 
 ```
     "checks": [
