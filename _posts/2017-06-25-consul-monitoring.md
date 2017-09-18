@@ -105,11 +105,14 @@ Create a configuration file /etc/consul.d/server/config.json with the below line
 * Configure the client
 
 Create the following directories on client 
+
 ```
 /etc/consul.d/script/
 /etc/consul.d/client/
 ```
+
 Create a configuration file /etc/consul.d/client/config.json with the below lines
+
 ```
 {
     "bootstrap" : false,
@@ -131,7 +134,7 @@ Consul store the data required by serf & raft protocol in their respective direc
 
 * Autostart consul bootstrap on Ubuntu 14.04 
 On 14.04 I am using upstart configuration to start consul on start up using the below configuration on server side.
-Setup a server configuration file   -   /etc/init/consul.conf
+Setup the bootstrap configuration file   -   /etc/init/consul.conf
 
 
 ```
@@ -272,8 +275,11 @@ Define the monitoring check in config.json for each of the host (bootstrap, serv
 
 Add the actual script file /etc/consul.d/script/cpu_utilization.sh
 to print exit codes.
+
 OK = exit 0
+
 Warning = exit 1
+
 Critical = exit 2
 
 
