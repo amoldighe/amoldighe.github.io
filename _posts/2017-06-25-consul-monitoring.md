@@ -114,7 +114,7 @@ Create a configuration file /etc/consul.d/client/config.json with the below line
 {
     "bootstrap" : false,
     "server" : false,
-    "datacenter" : "JSE-2",
+    "datacenter" : "DS1",
     "data_dir" : "/var/consul",
     "encrypt" : "RYBg5+WxobPhqUpHW5RthA==",
     "log_level" : "INFO",
@@ -132,6 +132,7 @@ Consul store the data required by serf & raft protocol in their respective direc
 * Autostart consul bootstrap on Ubuntu 14.04 
 On 14.04 I am using upstart configuration to start consul on start up using the below configuration on server side.
 Setup a server configuration file   -   /etc/init/consul.conf
+
 ```
 # Consul Agent (Upstart unit)
 description "Consul Agent"
@@ -145,6 +146,7 @@ kill timeout 10
 
 * Autostart consul server on Ubuntu 14.04 
 Setup a server configuration file   -   /etc/init/consul.conf
+
 ```
 # Consul Agent (Upstart unit)
 description "Consul Agent"
@@ -158,6 +160,7 @@ kill timeout 10
 
 * Autostart consul client on Ubuntu 14.04 
 Setup a client configuration file   -   /etc/init/consul.conf
+
 ```
 # Consul Agent (Upstart unit)
 description "Consul Agent"
@@ -171,6 +174,7 @@ kill timeout 10
 
 * Autostart consul client on Ubuntu 16.04 
 Setup a client configuration file  - /etc/systemd/system/consul-client.service
+
 ```
 [Unit]
 Description=Consul Server
@@ -219,6 +223,7 @@ server - Server RPC address. Default 8300.
 In case you have IPTABLES enabled on your consul nodes, see to it that you add the above ports 
 
 Verify the server cluster 
+
 ```
 root@consul-01:/etc/consul.d/bootstrap# consul members | grep server
 consul-01  192.168.12.161:8301  alive   server  0.9.0  2         dc1
@@ -248,11 +253,13 @@ Define the check in config.json for each of the host (bootstrap, server, client 
         },
 
 ```
+
 Add the actual script file /etc/consul.d/script/cpu_utilization.sh
 to print exit codes.
 OK = exit 0
 Warning = exit 1
 Critical = exit 2
+
 
 ```
 #!/bin/bash
