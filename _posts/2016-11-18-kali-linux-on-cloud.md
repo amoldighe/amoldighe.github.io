@@ -23,11 +23,15 @@ Using Kali Linux on Cloud was a requirement by our internal Security team, to us
 
 Create a disk image for the VM
 
-> qemu-img create -f qcow2 /var/lib/libvirt/images/kalilinux.qcow2 20G 
+```
+qemu-img create -f qcow2 /var/lib/libvirt/images/kalilinux.qcow2 20G 
+```
 
 Create a VM using the disk image 
 
-> virt-install --name kalilinux --vcpus=1 --ram 2048 --disk path=/var/lib/libvirt/images/kalilinux.qcow2,bus=virtio,cache=writeback --boot network --graphics vnc,listen=0.0.0.0 --network bridge:br1012,model=virtio 
+```
+virt-install --name kalilinux --vcpus=1 --ram 2048 --disk path=/var/lib/libvirt/images/kalilinux.qcow2,bus=virtio,cache=writeback --boot network --graphics vnc,listen=0.0.0.0 --network bridge:br1012,model=virtio 
+```
 
 * Connecting to virt-manager on the cloud baremetal node
 
@@ -131,13 +135,13 @@ Setting up xfconf (4.12.1-1) ...
 systemctl set-default graphical.target
 ```
 
-* Reboot the VM
+* Reboot the VM, this will display the GUI on next boot.
 
 <img src="{{ site.baseurl }}/img/4-kali-gui-working.png">
 
-* Next we need prepare the Kali Linux VM for Cloud by enabling ssh & cloud-init
+Next we need prepare the Kali Linux VM for Cloud by enabling ssh & cloud-init
 
-**Enable ssh on Kali Linux
+* Enable ssh on Kali Linux
 
 ```
 vi /etc/ssh/sshd_config
@@ -145,13 +149,13 @@ service ssh restart
 service ssh status
 ```
 
-** Install cloud-init
+* Install cloud-init
 
 ```
 apt-get install cloud-init
 ```
 
-** Reconfigure cloud-init 
+* Reconfigure cloud-init 
 
 ```
 vi /etc/cloud/cloud.cfg
@@ -163,7 +167,7 @@ cloud-init modules --mode=config
 cloud-init modules --mode=final
 ```
 
-** Cloud-int adds additional entries to sources.list, remove them as apt-get update fails 
+* Cloud-int adds additional entries to sources.list, remove them as apt-get update fails 
 
 ```
 root@kali-test-16jan:~# cat /etc/apt/sources.list
@@ -176,11 +180,14 @@ deb http://http.kali.org/kali kali-rolling main contrib non-free
 
 * Convert image to raw format 
 
-> qemu-img convert -f qcow2 -O raw kalilinux.qcow2 kalilinux.raw
+```
+qemu-img convert -f qcow2 -O raw kalilinux.qcow2 kalilinux.raw
+```
 
 * Upload to openstack glance
 
-> glance image-create --name KaliLinux --is-public False --disk-format raw --container-format bare --file /tmp/kalilinux.raw
-
+```
+glance image-create --name KaliLinux --is-public False --disk-format raw --container-format bare --file /tmp/kalilinux.raw
+```
 
 
