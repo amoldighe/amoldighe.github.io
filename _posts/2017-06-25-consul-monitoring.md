@@ -39,7 +39,7 @@ Reference - http://www.thegeekstuff.com/2009/07/linux-apache-mod-ssl-generate-ke
 * Configure the Bootstrap Server
 Create a configuration file /etc/consul.d/bootstrap/config.json with the below lines
 ```
-  {
+{
     "bootstrap" : true,
     "server" : true,
     "datacenter" : "DS1",
@@ -54,8 +54,8 @@ Create a configuration file /etc/consul.d/bootstrap/config.json with the below l
     "enable_syslog" : true,
     "bind_addr": "192.168.12.161",
     "start_join" : ["192.168.12.161", "192.168.12.162", "192.168.12.163"],
-    "node_name": "consul-01 ",
-  }
+    "node_name": "consul-01 "
+}
 ```
 * Configure Server1
 Create a configuration file /etc/consul.d/server/config.json with the below lines
@@ -75,7 +75,7 @@ Create a configuration file /etc/consul.d/server/config.json with the below line
     "enable_syslog" : true,
     "bind_addr": "192.168.12.162",
     "start_join" : ["192.168.12.161", "192.168.12.162", "192.168.12.163"],
-    "node_name": "consul-02",
+    "node_name": "consul-02"
 } 
 ```
 
@@ -99,7 +99,7 @@ Create a configuration file /etc/consul.d/server/config.json with the below line
     "enable_syslog" : true,
     "bind_addr": "192.168.12.163",
     "start_join" : ["192.168.12.161", "192.168.12.162", "192.168.12.163"],
-    "node_name": "consul-03",
+    "node_name": "consul-03"
 }
 ```
 * Configure the client
@@ -178,7 +178,7 @@ respawn limit 10 10
 kill timeout 10
 ```
 
-* Autostart consul client on Ubuntu 16.04 
+* Define startup for consul client on Ubuntu 16.04 
 Setup a client configuration file  - /etc/systemd/system/consul-client.service
 
 
@@ -198,6 +198,19 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
+```
+
+* Enable consul to start on boot for Ubuntu 16.04
+
+```
+>> systemctl list-unit-files | grep consul
+consul-client.service                   disabled
+
+>> systemctl enable consul-bootstrap.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/consul-client.service to /etc/systemd/system/consul-client.service.
+
+>>  systemctl list-unit-files | grep consul
+consul-client.service                   enabled
 ```
 
 * Manage Consul on Ubuntu 14.04 using commands 
