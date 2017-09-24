@@ -21,6 +21,7 @@ Below configuration is for setting up the Consul server cluster.
 * Copy the consul binary to /usr/local/bin/consul on all hosts
 
 * Create the below directory structure for Consul setup
+
 ```
 /etc/consul.d/bootstrap
 /etc/consul.d/server/
@@ -29,15 +30,19 @@ Below configuration is for setting up the Consul server cluster.
 /etc/consul.d/ui
 ```
 * Generate a encrypt key for Consul using command
+
 ```
 > consul keygen
 RYBg5+WxobPhqUpHW5RthA==
 ```
 * Generate self signed certificate
+
 Reference - http://www.thegeekstuff.com/2009/07/linux-apache-mod-ssl-generate-key-csr-crt-file
 
 * Configure the Bootstrap Server
+
 Create a configuration file /etc/consul.d/bootstrap/config.json with the below lines
+
 ```
 {
     "bootstrap" : true,
@@ -58,7 +63,9 @@ Create a configuration file /etc/consul.d/bootstrap/config.json with the below l
 }
 ```
 * Configure Server1
+
 Create a configuration file /etc/consul.d/server/config.json with the below lines
+
 ```
 {
     "bootstrap" : false,
@@ -82,7 +89,9 @@ Create a configuration file /etc/consul.d/server/config.json with the below line
 I am using this server to expose http service which defaults on port 8500 to https 
 
 * Configure Server2
+
 Create a configuration file /etc/consul.d/server/config.json with the below lines
+
 ```
 {
     "bootstrap" : false,
@@ -129,10 +138,12 @@ Create a configuration file /etc/consul.d/client/config.json with the below line
 ```
 
 * Create data directory for consul 
+
 The data directory is required on all servers & clients @ /var/consul/ 
 Consul store the data required by serf & raft protocol in their respective directories. Consul uses a consensus protocol to provide consistency, this consensus protocol is based on Raft.Only consul server participate in raft to elect a leader. Consul uses a gossip protocol to manage membership and broadcast messages to the cluster, this gossip protocol is implemented by Serf.
 
 * Autostart consul bootstrap on Ubuntu 14.04 
+
 On 14.04 I am using upstart configuration to start consul on start up using the below configuration on server side.
 Setup the bootstrap configuration file   -   /etc/init/consul.conf
 
@@ -149,6 +160,7 @@ kill timeout 10
 ```
 
 * Autostart consul server on Ubuntu 14.04 
+
 Setup a server configuration file   -   /etc/init/consul.conf
 
 
@@ -164,6 +176,7 @@ kill timeout 10
 ```
 
 * Autostart consul client on Ubuntu 14.04 
+
 Setup a client configuration file   -   /etc/init/consul.conf
 
 
@@ -179,6 +192,7 @@ kill timeout 10
 ```
 
 * Define startup for consul client on Ubuntu 16.04 
+
 Setup a client configuration file  - /etc/systemd/system/consul-client.service
 
 
