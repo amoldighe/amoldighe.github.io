@@ -94,7 +94,7 @@ dd if=/dev/zero of=zero-file2 bs=1M count=10000
 * Delete the zero files after creation 
 
 ```
-amold@maas-01:~$ rm -frv zero-file2 zero-file3 zero-file
+amold@maas-01:~$ rm -fv zero-file2 zero-file3 zero-file
 ```
 
 * Logout of the VM & back to the KVM nodes 
