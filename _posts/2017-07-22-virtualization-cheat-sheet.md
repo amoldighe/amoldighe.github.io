@@ -12,18 +12,17 @@ tags:
   - qcow2
   - virt-install
   - interface
- ---
+---
 
-* Create a disk image
+* Create a disk image for virtual machine
 
 ```
 qemu-img create -f qcow2 /home/amol/Documents/ISO/oraclelinu66-2.qcow2 6G
-```
 
 Formatting '/home/amol/Documents/ISO/oraclelinu66-2.qcow2', fmt=qcow2 size=6442450944 encryption=off cluster_size=65536 lazy_refcounts=off refcount_bits=16
-
+```
  
-* Create a VM 
+* Create a domain and spawn a virtual machine 
 
 ```
 virt-install --name oracle66-2 --vcpus=1 --ram=2048 --disk path=/home/amol/Documents/ISO/oraclelinu66-2.qcow2,bus=virtio,cache=writeback --graphics vnc,listen=0.0.0.0 --network bridge:virbr0,model=virtio --noautoconsole --os-type=linux --os-variant=rhel6 --location=/home/amol/Documents/ISO/OracleLinux66_V52218-01.iso
@@ -88,7 +87,7 @@ Complete!
 guestfish --rw -a /tmp/OracleLinux-66.img -i command "bash -c 'echo admin:amol123 | chpasswd'"
 ```
 
-* Attach a new interface to an existing VM 
+* Attach a new interface to an existing virtual machine 
 
 ```
 virsh attach-interface --domain oracle66-2 --type bridge --source br-new --model virtio
