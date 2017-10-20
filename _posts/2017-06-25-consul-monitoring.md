@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Consul for Monitoring"
+title:  "Consul Service Discovery - Monitoring"
 date:   2017-06-25
 tags:
   - consul

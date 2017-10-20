@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Consul for Monitoring"
-date:   2017-06-25
+title:  "Consul Alerts"
+date:   2017-07-01
 tags:
   - consul
   - monitoring
