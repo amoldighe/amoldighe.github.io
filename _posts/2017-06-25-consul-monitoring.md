@@ -10,10 +10,10 @@ tags:
   - serf 
   - raft
   - consul cluster
+  - service discovery
 ---
 
-I usually do not write setup guides as there are abundant of websites doing a good job of explaining setup and configuration for a opensource project. For Consul, somehow I felt the need to record the setup that we are rocking for production monitoring using Consul since past one year. 
-Consul is a versatile tool which can be used for Service Discovery, DNS, Key Value store.  We thought of leveraging Consul's service discovery mechanism and use it as our monitoring solution. Consul turns out to be a lightweight solution for setting up monitoring, as its memory & cpu footprint is relativity small compared to other monitoring solutions. It is available in a single binary which can be configured for a Server or Client setup.  Please note your Consul monitoring solution will be as good as how well you build your scripts which will be executed by consul and how you configure Consul.
+I usually do not write setup guides as there are abundant of websites doing a good job of explaining setup and configuration for a opensource project. For Consul, somehow I felt the need to record the setup for Consul that we are rocking for production service discovery since past one year. Consul is a versatile tool which can be used for Service Discovery, DNS, Key Value store.  We thought of leveraging Consul's service discovery mechanism and use it for monitoring along with consul-alert. Consul turns out to be a lightweight solution for setting up monitoring services, as its memory & cpu footprint is relativity small compared to other monitoring solutions. It is available in a single binary which can be configured for a Server or Client setup.  Please note your Consul monitoring solution will be as good as how well you build your scripts which will be executed by consul and how you configure Consul.
 
 The server cluster consist of a bootstrap server, server1 and server2.
 Below configuration is for setting up the Consul server cluster.
@@ -330,3 +330,5 @@ fi
 
 exit 0
 ```
+
+I will be talking about the consul-alert setup in a followup post.
