@@ -143,5 +143,51 @@ This should start consul-alert under supervisord
 
 * **Twilio**
 
+To implement Twilio alerts a paid Twilio account is needed. Twilio provide an api endpoint url for your account which can be used to make calls to any international phone number. In our case we have the consul monitor script to place a Twilio call by using this shell script - [twilio.sh](https://github.com/amoldighe/consul-twilio/blob/master/consul-twilio.sh) 
+
+For the Twilio script to work, the following setup is required on the Consul. 
+
+* Add the below keys end with '/' indicating folder 
+
+consul kv put consul-alerts/config/notifiers/twilio/
+consul kv put consul-alerts/config/notifiers/twilio/call-history/
+
+* Add the below key - value on any consul node 
+
+```
+consul kv put consul-alerts/config/notifiers/twilio/from-number  "+11111111111"
+
+consul kv put consul-alerts/config/notifiers/twilio/proxy-url "http://proxy-server-ip:port"
+
+consul kv put consul-alerts/config/notifiers/twilio/user-key "user-key-provided-by-twilio"
+
+consul kv put consul-alerts/config/notifiers/twilio/voice-xml "http://demo.twilio.com/docs/voice.xml"
+
+consul kv put consul-alerts/config/notifiers/twilio/xpost-url "https://api.twilio.com/2010-04-01/Accounts/twilio-account-key/Calls.json"
+
+consul kv put consul-alerts/config/notifiers/twilio/devops-numbers
+```
+
+The value for devops-numbers can be added from Consul dashboard dashboard using the key-value store in below format of one value per line and update the key.
+
+```
+e.g.
+
+9999999999
+9999999998
+9999999997
+9999999996
+9999999995
+9999999994
+9999999993
+9999999992
+9999999991
+```
+* Place the new twilio script in /etc/consul.d/script/twilio-call/twilio.sh
+
+Use /bin/bash to invoke the twilio script from any of the alert script.
+
+The twilio.sh script also has logic to populate the call history details to Consul dashboard key-value section.
+
 
 * **Slack**
