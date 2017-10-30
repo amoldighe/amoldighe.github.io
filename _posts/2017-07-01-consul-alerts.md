@@ -17,11 +17,11 @@ tags:
 
 Consul is an amazing tool for Service Discovery, which we have further leveraged to monitor these services and send us alearts incase these services are affected using consul-alerts. For our production private cloud setup, we wanted consul to send alreats via multiple channels like - emails, twilio & slack. Lets look at their setup one by one.
 
-* **Emails** 
+# Emails  
 
 * Download the latest consul-alerts binary from - https://github.com/AcalephStorage/consul-alerts and copy to /usr/local/bin/
 
-* Next we will be utilizing the consul key-value store for storing the parameters used by consul-alerts binary  
+* Next we will be utilizing the consul key-value store for storing the parameters used by [consul-alerts](https://github.com/AcalephStorage/consul-alerts) 
 
 ```
 (poc)amol@consul-02:~$ consul kv put consul-alerts/config/notifiers/emai
@@ -141,7 +141,7 @@ This should start consul-alert under supervisord
 ```
 
 
-* **Twilio**
+# Twilio
 
 To integrate Twilio alerts with Consul, a Twilio account is required. Twilio provide an api endpoint url for your account which can be used to make calls to any international phone number. In our case we have the consul monitor script to place a Twilio call by using this shell script - [twilio.sh](https://github.com/amoldighe/consul-twilio/blob/master/consul-twilio.sh) 
 
@@ -194,7 +194,7 @@ Use /bin/bash to invoke the twilio script from any of the alert script.
 The twilio.sh script also has logic to populate the call history details to Consul dashboard key-value section.
 
 
-* **Slack**
+# Slack
 
 Slack integration with Consul helped us send Consul alerts to a Slack channel which is being monitored by L1 team. 
 The integration setup is simple as consul-alerts supports slack integration using the key values mentioned on github for [consul-alerts](https://github.com/AcalephStorage/consul-alerts)
@@ -249,6 +249,4 @@ consul kv put consul-alerts/config/notifiers/slack/icon-emoji
 ```
 
 Watch the slack channel for alert !!
-
-
 
