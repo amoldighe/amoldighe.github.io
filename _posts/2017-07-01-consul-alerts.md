@@ -143,16 +143,20 @@ This should start consul-alert under supervisord
 
 * **Twilio**
 
-To implement Twilio alerts a paid Twilio account is needed. Twilio provide an api endpoint url for your account which can be used to make calls to any international phone number. In our case we have the consul monitor script to place a Twilio call by using this shell script - [twilio.sh](https://github.com/amoldighe/consul-twilio/blob/master/consul-twilio.sh) 
+To integrate Twilio alerts with Consul, a Twilio account is required. Twilio provide an api endpoint url for your account which can be used to make calls to any international phone number. In our case we have the consul monitor script to place a Twilio call by using this shell script - [twilio.sh](https://github.com/amoldighe/consul-twilio/blob/master/consul-twilio.sh) 
 
 For the Twilio script to work, the following setup is required on the Consul. 
 
 * Add the below keys end with '/' indicating folder 
 
+```
 consul kv put consul-alerts/config/notifiers/twilio/
 consul kv put consul-alerts/config/notifiers/twilio/call-history/
+```
 
 * Add the below key - value on any consul node 
+
+We will be using our web proxy to communicate with Twilio from our Private Cloud setup.
 
 ```
 consul kv put consul-alerts/config/notifiers/twilio/from-number  "+11111111111"
@@ -191,3 +195,60 @@ The twilio.sh script also has logic to populate the call history details to Cons
 
 
 * **Slack**
+
+Slack integration with Consul helped us send Consul alerts to a Slack channel which is being monitored by L1 team. 
+The integration setup is simple as consul-alerts supports slack integration using the key values mentioned on github for [consul-alerts](https://github.com/AcalephStorage/consul-alerts)
+
+* Login to slack account and follow the steps to create a incomming webhook for Consul on Slack channel under Custom Integrations.
+
+* Slack will provide a incomming webhook URL which can be used to send the alert.
+
+* Using web proxy for consul-alerts
+
+As consul alert is running inside a Private CLoud server, we will be using our web proxy to communicate with slack server to send an alert to the slack channel. This is accomplished using a shell script /usr/local/bin/consul-alerts-process.sh to start consul-alerts. 
+
+```
+#!/bin/bash
+export https_proxy='http://<proxy ip>:<proxy port>'
+nohup /usr/local/bin/consul-alerts start --consul-dc=poc-dc --watch-checks --watch-events --log-level=debug
+```
+
+This script uses export hhtps_proxy to set the proxy before starting consul-alerts. This will help consul-alerts hit the slack webhook url which will be set as a notifier key-vlaue in the below commands on any one of the Consul server.
+
+1. To create slack notifiers
+```
+consul kv put consul-alerts/config/notifiers/slack/
+```
+2. Enable slack notifier
+```
+consul kv put consul-alerts/config/notifiers/slack/enabled "true"
+```
+3. Set Consul cluster name
+```
+consul kv put consul-alerts/config/notifiers/slack/cluster-name "cloud-poc" 
+```
+4. Set Slack incoming webhook url
+```
+consul kv put consul-alerts/config/notifiers/slack/url "https://hooks.slack.com/services/slack/incomming/web-hook-hash-url"
+```
+5. Set slack channel name
+```
+consul kv put consul-alerts/config/notifiers/slack/channel "#cloud-poc-alerts"
+```
+6. Set username (empty here, as no username needed)
+```
+consul kv put consul-alerts/config/notifiers/slack/username " "
+```
+7. Set icon url (default icon will be used)
+```
+consul kv put consul-alerts/config/notifiers/slack/icon-url
+```
+8. Set default icon as icon-emoji
+```
+consul kv put consul-alerts/config/notifiers/slack/icon-emoji
+```
+
+Watch the slack channel for alert !!
+
+
+
