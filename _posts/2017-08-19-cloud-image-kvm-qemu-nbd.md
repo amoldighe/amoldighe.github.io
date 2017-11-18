@@ -94,7 +94,7 @@ root@hp-envy:~# mount /dev/nbd0p1 /mnt/srcVM
 
 ```
 root@hp-envy:~# cd /mnt/srcVM/
-root@amol-HP-ENVY-15-Notebook-PC:/mnt/srcVM# ls
+root@hp-envy:/mnt/srcVM# ls
 bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz
 ```
 
@@ -137,7 +137,7 @@ root@hp-envy:~# qemu-nbd --disconnect /dev/nbd0
 /dev/nbd0 disconnected
 ```
 
-* Start the cloud image 
+* Spawn a VM using the cloud image file  
 
 ```
 root@hp-envy:~# virt-install --name ubuntu14 --vcpus 1 --memory 1024 --disk path=/var/lib/libvirt/images/ubuntu-server-1404.img,bus=virtio,cache=writeback 
