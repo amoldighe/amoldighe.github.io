@@ -42,7 +42,7 @@ Format specific information:
 
 * Resize disk image
 
-The size of the new disk image is inadequate for production use, as need a larger root disk partion 
+The size of the new disk image of 2 GB is inadequate for production use, as a larger root disk partition is required. 
 
 ```
 root@hp-envy:~# qemu-img resize /var/lib/libvirt/images/ubuntu-server-1404-NEW.img 50G
@@ -103,7 +103,7 @@ Device      Boot Start     End Sectors Size Id Type
 /dev/nbd0p1 *     2048 4194303 4192256   2G 83 Linux
 ```
 
-* I will be using growpart to extend the partition 
+* I will be using growpart to extend the partition 1 mounted on nbd0 
 
 ```
 root@hp-envy:~# growpart /dev/nbd0 1
@@ -225,7 +225,7 @@ root@hp-envy:/mnt/newVM# cp -rp /mnt/oldVM/u* ./
 
 * Check the block device UUID
 
-We have copied the /etc/fstab from old VM to new VM in the earlier step, which contains the UUID of the block device attached to the root filesystem on the image disk. The below command displays the UUID of the block device attached.
+We have copied the /etc/fstab from old VM to new VM in the earlier step, which contains the UUID of the block device attached to the root filesystem on the image disk. The below command displays the UUID of the block device attached on both the nbd device partitions.
 
 ```
 root@hp-envy:~# blkid /dev/nbd0p1
@@ -235,7 +235,7 @@ root@hp-envy:~# blkid /dev/nbd1p1
 /dev/nbd1p1: LABEL="cloudimg-rootfs" UUID="97cea586-4b5c-4710-8d23-5cae6c12ae40" TYPE="ext4" PARTUUID="000c5984-01"
 ```
 
-As the /etc/fstab entry corresponds to the UUID of the OLD VM 's block device, this UUID needs to be mapped to new VM.
+As the /etc/fstab entry corresponds to the UUID of the OLD VM 's block device, this same UUID needs to be mapped to new VM.
 
 Please note, if tune2fs commands prompts for a fsck on the file system, go ahead a do the same as below.
 If not then, tune2fs should set the new UUID for block device. 
@@ -261,7 +261,7 @@ Setting UUID on a checksummed filesystem could take some time.
 Proceed anyway (or wait 5 seconds) ? (y,N) <proceeding>
 ```
 
-Both disk image partitions should have the same UUID for it's block device. 
+Now both the disk image partitions should have the same UUID for it's block device. 
 
 ```
 root@hp-envy:~# blkid /dev/nbd0p1
@@ -281,7 +281,7 @@ root@hp-envy:~# qemu-nbd --disconnect /dev/nbd1
 /dev/nbd1 disconnected
 ```
 
-* I am going to boot the existing / OLD VM (which is actually not corrupted & still bootable) for skae of displaying the diferences
+* I am going to boot the existing / OLD VM (which is actually not corrupted & still bootable) for sake of displaying the differences.
 
 ```
 root@hp-envy:/var/lib/libvirt/images# virsh start ubuntu14
@@ -305,6 +305,8 @@ udev            493M   12K  493M   1% /dev
 tmpfs           100M  376K  100M   1% /run
 /dev/vda1       2.2G  799M  1.3G  39% /
 ```
+
+Note the kernel version & root partition size on the existing / OLD VM.
 
 * Shutdown the OLD VM 
 
@@ -359,14 +361,17 @@ tmpfs           100M  376K  100M   1% /run
 
 ```
 
-Note the size of the VM's root partition is 50 GB
+Note the upgraded kernel version & size of the VM's root partition is 50 GB
 
 
 * ***Reference Links*** 
 
 [https://linux.die.net/man/1/qemu-img](https://linux.die.net/man/1/qemu-img)
+
 [https://www.jamescoyle.net/tag/qemu-nbd](https://www.jamescoyle.net/tag/qemu-nbd)
+
 [https://www.systutorials.com/docs/linux/man/1-growpart/](https://www.systutorials.com/docs/linux/man/1-growpart/)
+
 [http://landoflinux.com/linux_tune2fs_command.html](http://landoflinux.com/linux_tune2fs_command.html)
 
 
