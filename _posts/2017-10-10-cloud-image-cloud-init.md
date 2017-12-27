@@ -7,10 +7,12 @@ tags:
   - trusty-server-cloudimg-amd64-disk1.img
   - ubuntu
   - virsh
-  - cloudimg
+  - cloud-init
+  - config-drive
   - uuidgen
   - mkisofs
-  - qemu-utils
+  - meta-data
+  - user-data
   - virt-install
 ---
 
