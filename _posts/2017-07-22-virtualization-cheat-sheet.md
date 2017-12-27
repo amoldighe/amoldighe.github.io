@@ -144,8 +144,160 @@ Mounting VM disk image:
 [qemu-nbd](https://www.jamescoyle.net/tag/qemu-nbd)
 
  
+* Command for KVM - Guest / Virtual Machine stat check
 
+List VM and fetch its hardware status information
 
+```
+root@hp-envy:/mnt/srcVM# virsh list 
+ Id    Name                           State
+----------------------------------------------------
+ 1     ubuntu14                       running
 
+root@hp-envy:/mnt/srcVM# virsh dominfo ubuntu14
+Id:             1
+Name:           ubuntu14
+UUID:           f55e0174-6e75-4ed8-a09c-705cacfe8653
+OS Type:        hvm
+State:          running
+CPU(s):         1
+CPU time:       8.9s
+Max memory:     1048576 KiB
+Used memory:    1048576 KiB
+Persistent:     yes
+Autostart:      disable
+Managed save:   no
+Security model: apparmor
+Security DOI:   0
+Security label: libvirt-f55e0174-6e75-4ed8-a09c-705cacfe8653 (enforcing)
+```
+
+Get VM CPU details:
+
+```
+root@hp-envy:~# virsh domstats --vcpu ubuntu14
+Domain: 'ubuntu14'
+  vcpu.current=1
+  vcpu.maximum=1
+  vcpu.0.state=1
+  vcpu.0.time=7560000000
+  vcpu.0.wait=0
+  vcpu.0.halted=yes
+
+"vcpu.current" - current number of online virtual CPUs
+"vcpu.maximum" - maximum number of online virtual CPUs
+"vcpu.<num>.state" - state of the virtual CPU <num>
+"vcpu.<num>.time" - virtual cpu time spent by virtual CPU <num> (in microseconds)
+"vcpu.<num>.wait" - virtual cpu time spent by virtual CPU <num> waiting on I/O (in microseconds)
+"vcpu.<num>.halted" - virtual CPU <num> is halted: yes or no 
+``` 
+
+```
+root@hp-envy:~# virsh domstats --cpu-total ubuntu14
+Domain: 'ubuntu14'
+  cpu.time=9323162046
+  cpu.user=1400000000
+  cpu.system=2220000000
+
+"cpu.time" - total cpu time spent for this domain in nanoseconds
+"cpu.user" - user cpu time spent in nanoseconds
+"cpu.system" - system cpu time spent in nanoseconds
+
+```
+
+VM memory stats
+
+```
+root@hp-envy:~# virsh dommemstat  ubuntu14
+actual 1048576
+swap_in 0
+last_update 1514374267
+rss 288460
+
+swap_in           - The amount of data read from swap space (in kB)
+actual            - Current balloon value (in KB)
+rss               - Resident Set Size of the running domain's process (in kB)
+last-update       - Timestamp of the last update of statistics (in seconds)
+```
+
+Print a table showing the brief information of all block devices associated with domain.
+
+```
+root@hp-envy:~# virsh domblklist  ubuntu14
+Target     Source
+------------------------------------------------
+vda        /var/lib/libvirt/images/ubuntu-server-1404.img
+hda        /var/lib/libvirt/images/config-node.iso
+```
+
+Get block device size info for a domain. 
+
+```
+root@hp-envy:~# virsh domblkinfo  ubuntu14 vda --human
+Capacity:       2.199 GiB
+Allocation:     393.324 MiB
+Physical:       393.375 MiB
+
+root@hp-envy:~# virsh domblkinfo  ubuntu14 hda --human
+Capacity:       364.000 KiB
+Allocation:     364.000 KiB
+Physical:       364.000 KiB
+```
+
+VM block device stats.
+
+```
+root@hp-envy:~# virsh domblkstat  ubuntu14 --human
+Device: 
+ number of read operations:      4735
+ number of bytes read:           104040094
+ number of write operations:     245
+ number of bytes written:        4592640
+ number of flush operations:     28
+ total duration of reads (ns):   38175594855
+ total duration of writes (ns):  1831031913
+ total duration of flushes (ns): 5564971530
+```
+
+List interface used for the Virtual Machine
+
+```
+root@hp-envy:~# virsh domiflist ubuntu14
+Interface  Type       Source     Model       MAC
+-------------------------------------------------------
+vnet0      bridge     virbr0     virtio      52:54:00:e4:53:22
+```
+
+List the Virtual Machine data transfer details.
+ 
+```
+root@hp-envy:~# virsh domifstat ubuntu14 vnet0
+vnet0 rx_bytes 142202
+vnet0 rx_packets 2626
+vnet0 rx_errs 0
+vnet0 rx_drop 0
+vnet0 tx_bytes 6300
+vnet0 tx_packets 59
+vnet0 tx_errs 0
+vnet0 tx_drop 0
+```
+
+List the active network 
+
+```
+root@hp-envy:~# virsh net-list
+ Name                 State      Autostart     Persistent
+----------------------------------------------------------
+ default              active     yes           yes
+```
+
+Get a list of dhcp leases for all network interfaces connected to the given virtual network
+
+```
+root@hp-envy:~# virsh net-dhcp-leases default 
+ Expiry Time          MAC address        Protocol  IP address                Hostname        Client ID or DUID
+-------------------------------------------------------------------------------------------------------------------
+ 2017-12-27 20:15:35  52:54:00:e4:53:22  ipv4      192.168.122.238/24        cfg01           -
+```
 
 
