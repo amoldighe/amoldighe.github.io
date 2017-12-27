@@ -62,7 +62,7 @@ public-keys:
 root@hp-envy:~# mkisofs -o /var/lib/libvirt/images/config-drv.iso -V cidata -r -J --quiet cloud-configdir
 ```
 
-* OR use this script - [create-config-drive](https://github.com/larsks/virt-utils/blob/master/create-config-drive) to generate the iso file 
+* OR use this script [create-config-drive.sh](https://github.com/larsks/virt-utils/blob/master/create-config-drive) to generate the iso file 
 
 ```
 root@amol-HP-ENVY-15-Notebook-PC:~# bash ./create-config-drive.sh -k /home/amol/.ssh/id_rsa.pub -h cfg01 /var/lib/libvirt/images/config-drv.iso
@@ -140,13 +140,15 @@ Last login: Wed Dec 27 15:51:24 2017 from hp-envy
 ubuntu@node-1:~$ 
 ```
 
-Congratulations again!! you have successfully booted a cloud image on KVM.
+Congratulations Again!! you have successfully booted a cloud image on KVM.
 
 
-* Reference Links
+* ***Reference Links***
 
 [https://www.digitalocean.com/community/tutorials/how-to-use-cloud-config-for-your-initial-server-setup](https://www.digitalocean.com/community/tutorials/how-to-use-cloud-config-for-your-initial-server-setup)
+
 [https://www.cloudsigma.com/an-introduction-to-server-provisioning-with-cloudinit](https://www.cloudsigma.com/an-introduction-to-server-provisioning-with-cloudinit)
+
 [http://ibm-blue-box-help.github.io/help-documentation/nova/Metadata_service_FAQ/](http://ibm-blue-box-help.github.io/help-documentation/nova/Metadata_service_FAQ/)
 
 
