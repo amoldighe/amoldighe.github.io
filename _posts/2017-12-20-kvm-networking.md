@@ -325,7 +325,7 @@ Please note - I had to restart the VM, as restarting networking did not work, ma
 Virtual bridge got an vnet3 interface attached for the VM node-2 for network natntw
 
 ```
-root@amol-hp-elite:~# brctl show virbr1                                                                                                               
+root@amol-hp-elite:~# brctl show virbr1
 bridge name     bridge id               STP enabled     interfaces         
 virbr1          8000.525400b8ffb7       yes             virbr1-nic         
                                                         vnet3         
@@ -400,11 +400,12 @@ rtt min/avg/max/mdev = 30.477/50.960/69.533/16.003 ms
 Ping to google.com is now working as it connecting to outside network using the newly attached NAT interface on VM's eth1.
 
 
-
 * ***Reference Links***
 
 [https://kashyapc.fedorapeople.org/virt/create-a-new-libvirt-bridge.txt](https://kashyapc.fedorapeople.org/virt/create-a-new-libvirt-bridge.txt)
+
 [https://jamielinux.com/docs/libvirt-networking-handbook/nat-based-network.html](https://jamielinux.com/docs/libvirt-networking-handbook/nat-based-network.html)
+
 [https://libvirt.org/formatnetwork.html#examplesNAT](https://libvirt.org/formatnetwork.html#examplesNAT)
 
 
