@@ -214,7 +214,9 @@ root@amol-hp-elite:~# virsh net-list
  natntw               active     yes           yes
 ```
 
-* I have created a VM and attached to the hostntw network, let see it's behaviour
+**NEXT - Let's see the behaviour of a VM on Host-Only Network**
+
+* Spawning a VM on hostntw - our Host-Only network 
 
 ```
 root@amol-hp-elite:~# virt-install --name node-2 --vcpus=1 --memory 512 --disk path=/var/lib/libvirt/images/trusty-server-cloudimg-amd64-disk1-node2.i
@@ -289,9 +291,10 @@ ubuntu@node-2:~$ ping google.com
 ping: unknown host google.com        
 ```
 
-* Next we will try to attach a NAT interface/network to the VM -node-2 and try to reach outside through the NAT interface.
+**NEXT - Attach a NAT interface to an existing VM to reach outside network**
 
-I will be using the newly created natntw network having the IP subnet 192.168.100.XXX to accomplish this.
+We will attach a NAT interface/network to the existing VM, node-2 to reach outside through the NAT interface.
+I will be using the newly created natntw network having the IP subnet 192.168.100.XXX to accomplish the same.
 
 ``` 
 root@amol-hp-elite:~# virsh net-info natntw
