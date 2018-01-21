@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "KVM Networking"
+title:  "KVM Networking - NAT & Host-Only"
 date:   2017-12-20
 tags:
   - KVM
@@ -25,9 +25,7 @@ tags:
 ---
 
 
-KVM - Networking Adding NAT interface & Host Only Interface
-
-As the title suggest, we are going to explore networking for Virtual (guest) machines and host machine, specifically NAT interface and Host Only Interface. I will be covering Bridge networking in a later post. To start with, I am going to list a few concepts for better understanding of kvm networking. Lets go through the type of networks a Virtual Machine can be attached to:
+As the title suggest, we are going to explore networking for Virtual (guest) machines and host machine, for NAT interface and Host Only interface. I will be covering Bridge networking in a later post. To start with, I am going to list a few concepts for better understanding of kvm networking. Lets go through the type of networks a Virtual Machine can be attached to:
 
 * Host-Only: The VM will be assigned a IP which is only accessible by the host machine where the VM is running on. Only the host machine can talk to the VM, no other host can access it.
 
