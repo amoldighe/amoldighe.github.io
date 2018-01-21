@@ -37,12 +37,12 @@ As the title suggest, we are going to explore networking for Virtual (guest) mac
 
 The below interfaces will be noticed on the host machine:  
 
-virbr is a virtual bridge interfaces provided by libvirt library. It's role is to act like a bridge, it switch packets (at layer 2) between the interfaces (real or other) that are attached. There is a gateway IP attached to this virtual bridge which is visible on the host machine. The bridge is connected to a virtual router which provides DHCP which basically gives the virtual machine an IP address on that subnet which the bridge connects to.
+virbr is a virtual bridge interfaces provided by libvirt library. It's acts as a bridge, to switch packets (at layer 2) between the interfaces (real or other) that are attached. There is a gateway IP attached to this virtual bridge which is visible on the host machine. The bridge is connected to a virtual router which provides DHCP which basically gives the virtual machine an IP address on that subnet to which the bridge is connected.
 
-vnet interfaces is a type of virtual interface called tap interfaces. It is attached to a qemu-kvm emulator process for reading-writing data between the host and the VM. A vnet will be added to a bridge interface for plugging the VM into virtual network. 
+vnet interfaces is a type of virtual interface called tap interfaces. It is attached to a qemu-kvm process for reading-writing data between the host and the VM. A vnet will be added to a bridge interface for plugging the VM into virtual network. 
 
 
-* Currently have a default network
+* Lets first go through the default network on my host machine
 
 ```
 root@amol-hp-elite:~# virsh net-list --all
@@ -109,10 +109,11 @@ root@amol-hp-elite:~# virsh net-dhcp-leases default
  2018-01-21 12:56:45  52:54:00:ae:45:66  ipv4      192.168.122.181/24        node-1          -
 ```
 
-The above explains the default NAT network, lets track steps to create another NAT network.
+
+**Now lets track steps to create another NAT network and a Host-Only network**
   
 
-* Create a network configuration xml
+* Create a network configuration xml for NAT network
 
 ```
 root@amol-hp-elite:~# cat nat.xml
@@ -131,13 +132,13 @@ root@amol-hp-elite:~# cat nat.xml
   </ip>
 </network>
 ```
-We have define the network name, network mode is set to NAT, a new bridge name as virbr1, network gateway, network subnet mask and IP range.
+We have defined the network name, network mode is set to NAT, a new bridge named as virbr1, network gateway, network subnet mask and IP range.
 
 * Define the new network
 
 ```
-root@amol-hp-elite:~# virsh net-define nat.xml                             
-Network natntw defined from nat.xml  
+root@amol-hp-elite:~# virsh net-define nat.xml
+Network natntw defined from nat.xml
 ```
 
 Network bridge details are setup as soon as the new network is defined.
@@ -155,14 +156,14 @@ Bridge:         virbr1
 * Start the network 
 
 ```
-root@amol-hp-elite:~# virsh net-start natntw                                                                                                          
+root@amol-hp-elite:~# virsh net-start natntw
 Network natntw started               
 ```
 
 This should start the virtual bridge virbr1 on the host machine
 
 ```
-8: virbr1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000                                              
+8: virbr1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
     link/ether 52:54:00:b8:ff:b7 brd ff:ff:ff:ff:ff:ff                     
     inet 192.168.100.1/24 brd 192.168.100.255 scope global virbr1          
        valid_lft forever preferred_lft forever                             
