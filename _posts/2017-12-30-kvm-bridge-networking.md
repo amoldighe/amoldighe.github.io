@@ -21,7 +21,7 @@ tags:
 
 In a bridged network, the guest VM is on the same network as your host machine i.e. if your host machine IP is 192.168.122.25 then your VM will have a IP address like 192.168.122.30. The virtual machine can be accessed by all computers in your host network as it is part of same network IP range. 
 
-To explore bridge interface, I have setup a Ubuntu Desktop VM (hostname = ubuntu-desk) on my Laptop which will act as a HOST machine. This host machine ubuntu-desk has a VM running on it in bridge mode.  
+To explore bridge interface, I have setup a Ubuntu Desktop VM (hostname = ubuntu-desk) which will act as a HOST machine. This host machine ubuntu-desk has a VM running on it, in bridge mode.  
 
 
 * Add the bridge interface on host machine 
@@ -56,7 +56,7 @@ root@ubuntu-desk:~# ip a | grep vmbr0 -A 4
     link/ether 52:54:00:d9:22:19 brd ff:ff:ff:ff:ff:ff
 ```
 
-You would notice vmbr0 is attached in your physical interface
+You would notice vmbr0 is attached to the physical interface ens3
 
 
 * The bridge interface will also reflect in brctl show
@@ -75,7 +75,7 @@ root@ubuntu-desk:~# dhclient vmbr0
 
 * Start the VM by connecting it to the vmbr0 bridge on host machine 
 
-I have connected the bridge network directly to an existing VM on the host machine using virtual machine manager.
+I have connected the bridge network interface directly to an existing VM on the host machine using virtual machine manager.
 Following is the dump of it's xml.
 
 ```
@@ -138,7 +138,7 @@ root@ubuntu-desk:~# ip a | grep vmbr0 -A11
 What we saw above is a temporary solution to build & attach a bridge network.
 For a permanent solution the bridge interface details need to be added to /etc/network/interfaces file on the host machine.
 
-In my case my host machine is running Ubuntu 17.10 Desktop version, where I discovered that network configuration is managed by Netplan instead of the /etc/network/interfaces file. Digging further on Dr Google, led me to few good webpages which I have listed below, this gave me an understanding as where to add this new yaml configuration in netplan for adding an permanent bridge interface.
+My host machine is running Ubuntu 17.10 Desktop version, where I discovered that network configuration is managed by Netplan instead of the /etc/network/interfaces file. Digging further on Dr Google, led me to few good webpages which I have listed below, this gave me an understanding as where to add this new yaml configuration in netplan for adding an permanent bridge interface.
 
 * Add a new network configuration YAML file 
 
@@ -159,7 +159,7 @@ network:
                 forward-delay: 0
 ```
 
-Ubuntu desktop uses Network Manager as renderer for network configuration yaml. The network manager GUI can be accessed through nm-connection-editor command to configure/add a new network interface. I did not want to use Network Manager GUI and use a configuration file to make my bridge configuration persistent, hence I thought of using networkd as the renderer for to manage my network configuration to setup a permanent bridge interface.
+Ubuntu desktop uses Network Manager as renderer for network configuration yaml. The network manager GUI can be accessed through nm-connection-editor command to configure/add a new network interface. I wanted to set my configuration the old school way rather than using the Network Manager GUI, hence I used networkd as the renderer for to managing my network configuration to setup a permanent bridge interface.
 
 * Apply the configuration in yaml file.
 
