@@ -92,14 +92,17 @@ Ceph cluster uses a cephx authentication system to authenticate clients and daem
 
 <img src="{{ site.baseurl }}/img/ceph-session.png">
 
-```
-* A user/actor invokes a Ceph client to contact a monitor. 
-* The monitor returns an authentication ticket that contains a session key for use in obtaining Ceph services. This session key is itself encrypted with the user’s permanent secret key, so that only the user can request services from the Ceph Monitor(s). 
-* The client then uses the session key to request its desired services from the monitor.
-* The monitor provides the client with a ticket that will authenticate the client to the OSDs that actually handle data. 
-* Ceph Monitors and OSDs share a secret.
-* The client uses the ticket provided by the monitor with any OSD or metadata server in the cluster.
-```
+> A user/actor invokes a Ceph client to contact a monitor. 
+
+> The monitor returns an authentication ticket that contains a session key for use in obtaining Ceph services. This session key is itself encrypted with the user’s permanent secret key, so that only the user can request services from the Ceph Monitor(s). 
+
+> The client then uses the session key to request its desired services from the monitor.
+
+> The monitor provides the client with a ticket that will authenticate the client to the OSDs that actually handle data. 
+
+> Ceph Monitors and OSDs share a secret.
+
+> The client uses the ticket provided by the monitor with any OSD or metadata server in the cluster.
 
 
 * ***Reference Links***
