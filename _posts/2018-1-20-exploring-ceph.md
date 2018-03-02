@@ -43,6 +43,20 @@ Ceph’s OSD Daemons and Ceph Clients are cluster aware. Like Ceph clients, each
 
 * ***CRUSH*** 
 
+CRUSH map knows the topology of the cluster and is system aware. Data stored in CRUSH map is indicated using logical buckets for each host and their corresponding osd's. Each host bucket contains an unique negative integer, weight of the bucket, alorithm used, hash algorithm, osd id and their weight.
+
+``
+host ceph-002 {
+        id -2           
+        # weight 2.727
+        alg straw
+        hash 0  # rjenkins1
+        item osd.0 weight 0.909
+        item osd.2 weight 0.909
+        item osd.4 weight 0.909
+}
+``  
+
 Ceph Clients and Ceph OSD Daemons both use the CRUSH algorithm to efficiently compute information about object location, instead of having to depend on a central lookup table. Ceph stores data as objects within logical storage pools. Using the CRUSH (Controlled Replication Under Scalable Hashing) algorithm, Ceph hashes the object to be stored, and dynamically calculates which placement group should contain the object. The CRUSH map is refered to further determine which Ceph OSD Daemon should store the placement group. The CRUSH algorithm enables the Ceph Storage cluster to scale, rebalance, and recover dynamically.
 
 <img src="{{ site.baseurl }}/img/crush.jpg">
