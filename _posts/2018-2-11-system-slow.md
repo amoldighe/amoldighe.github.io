@@ -85,13 +85,13 @@ Each IO request will take some time to complete, this is called the average late
 ***Linux Performance Tools***
 
 ```
-***Observebility Tools*** - uptime, top, atop, htop, ps, vmstat, mpstat, iostat, free, strace, tcpdump, netstat, pidstat, lsof, swapon, sar, ss
+Observebility Tools - uptime, top, atop, htop, ps, vmstat, mpstat, iostat, free, strace, tcpdump, netstat, pidstat, lsof, swapon, sar, ss
 
-***Benchmarking Tools*** - fio, dd, sysbench, iperf
+Benchmarking Tools - fio, dd, sysbench, iperf
 
-***Tuning Tools*** - sysctl, ethtool, ip, route, nice, ulimit, chcpu, tune2fs, ionice, hdparm
+Tuning Tools - sysctl, ethtool, ip, route, nice, ulimit, chcpu, tune2fs, ionice, hdparm
 
-***Static Tools*** - df, ip, route, lsblk, lsscsi, swapon, lscpu, lshw, sysctl, lspci, ldd, sysctl
+Static Tools - df, ip, route, lsblk, lsscsi, swapon, lscpu, lshw, sysctl, lspci, ldd, sysctl
 
 ```
 
@@ -107,5 +107,5 @@ Check output of system components for a certain time period to locate the proble
 
 [Brendan Gregg Video](https://youtu.be/FJW8nGV4jxY?list=PLwZOquYxKJS5_4UhfSCvOa-89LBuI0IIQ)
 
-[Rickard Nobel] (http://rickardnobel.se/storage-performance-iops-latency-throughput/)
+[Rickard Nobel](http://rickardnobel.se/storage-performance-iops-latency-throughput/)
 
