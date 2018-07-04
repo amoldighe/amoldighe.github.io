@@ -63,12 +63,12 @@ Each of the system resource writes error messages to a log file which help in in
 * ***Check System Metrices***
  Check output of performance tools like metrics or graphs depicting the metrices for 
 
-``
+```
     CPUs: cpu load 
     Memory: memory capacity load
     Network interfaces : recieve data, transmit data 
     Storage devices: IOPS, Capacity, Throughput, Latency 
-``
+```
     
 To explain the above terms for storage device metrices, I am going to take reference from an article by [Rickard Nobel] (http://rickardnobel.se/storage-performance-iops-latency-throughput/) here is some information in extract from the same article which I feel is important for our explaination.
 
@@ -76,23 +76,21 @@ Throughput is usually expressed in Megabytes / Second (MB/s). The maximum throug
 
 IOPS means IO operations per second, which means the amount of read or write operations that could be done in one seconds time. A certain amount of IO operations will also give a certain throughput of Megabytes each second, so these two are related. A third factor is however involved: the size of each IO request. Depending on the operating system and the application/service that needs disk access it will issue a request to read or write a certain amount of data at the same time. This is called the IO size and could be for example 4 KB, 8 KB, 32 KB and so on. The minimum amount of data to read/write is the size of one sector, which is 512 byte only.
 
-This means:
-
+``
 Average IO size x IOPS = Throughput in MB/s
+``
 
 Each IO request will take some time to complete, this is called the average latency. This latency is measured in milliseconds (ms) and should be as low as possible. There are several factors that would affect this time. Many of them are physical limits due to the mechanical constructs of the traditional hard disk.
 
 ***Linux Performance Tools***
 
-``
-Observebility Tools - uptime, top, atop, htop, ps, vmstat, mpstat, iostat, free, strace, tcpdump, netstat, pidstat, lsof, swapon, sar, ss
+***Observebility Tools*** - uptime, top, atop, htop, ps, vmstat, mpstat, iostat, free, strace, tcpdump, netstat, pidstat, lsof, swapon, sar, ss
 
-Benchmarking Tools - fio, dd, sysbench, iperf
+***Benchmarking Tools*** - fio, dd, sysbench, iperf
 
-Tuning Tools - sysctl, ethtool, ip, route, nice, ulimit, chcpu, tune2fs, ionice, hdparm
+***Tuning Tools*** - sysctl, ethtool, ip, route, nice, ulimit, chcpu, tune2fs, ionice, hdparm
 
-Static Tools (for tuning system without load) - df, ip, route, lsblk, lsscsi, swapon, lscpu, lshw, sysctl, lspci, ldd, sysctl
-``
+***Static Tools*** - df, ip, route, lsblk, lsscsi, swapon, lscpu, lshw, sysctl, lspci, ldd, sysctl
 
 ***Profiling***
  
