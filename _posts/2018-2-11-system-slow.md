@@ -22,19 +22,20 @@ Below are the methodologies to resolve system issue.
  
 Ask question to customer related to the performance issue - what, when, where, which, changes ?
 
-What makes you think there is a performance problem ?
+* What makes you think there is a performance problem ?
 
-Has the system ever performed well ?
+* Has the system ever performed well ?
 
-What has changed recently - hardware, software, load ?
+* What has changed recently - hardware, software, load ?
 
-Can the performance degradation be expressed in terms of latency or run time ?
+* Can the performance degradation be expressed in terms of latency or run time ?
 
-Does the performance affect other people or other application or its just you ?
+* Does the performance affect other people or other application or its just you ?
 
-What is the environment - hardware, software, instance type, version, configuration ?
+* What is the environment - hardware, software, instance type, version, configuration ?
 
 * ***Workload characterization method***
+
 Who is causing the load ? 
 Get information regarding the PID, UID, IP address.
 
@@ -50,22 +51,24 @@ How is the load changed overtime ?
 
 Check these for every resource:
 
-Utilization - Average time the system resource was busy serviceing a request.
+***Utilization*** - Average time the system resource was busy serviceing a request.
 The metric for utilization can be defined as a percentage over time interval e.g. "one of the cpu core is running at 95% utilization"
 
-Saturation - A degree to which a system resource has extra work which it cannot service or is being queued. 
+***Saturation*** - A degree to which a system resource has extra work which it cannot service or is being queued. 
 The queue length of task to be serviced by the cpu. 
 
-Errors - Count of error for each system resource. 
+***Errors*** - Count of error for each system resource. 
 Each of the system resource writes error messages to a log file which help in investigation of an issue.
 
 * ***Check System Metrices***
  Check output of performance tools like metrics or graphs depicting the metrices for 
 
+``
     CPUs: cpu load 
     Memory: memory capacity load
     Network interfaces : recieve data, transmit data 
     Storage devices: IOPS, Capacity, Throughput, Latency 
+``
     
 To explain the above terms for storage device metrices, I am going to take reference from an article by [Rickard Nobel] (http://rickardnobel.se/storage-performance-iops-latency-throughput/) here is some information in extract from the same article which I feel is important for our explaination.
 
@@ -81,10 +84,15 @@ Each IO request will take some time to complete, this is called the average late
 
 ***Linux Performance Tools***
 
+``
 Observebility Tools - uptime, top, atop, htop, ps, vmstat, mpstat, iostat, free, strace, tcpdump, netstat, pidstat, lsof, swapon, sar, ss
+
 Benchmarking Tools - fio, dd, sysbench, iperf
+
 Tuning Tools - sysctl, ethtool, ip, route, nice, ulimit, chcpu, tune2fs, ionice, hdparm
+
 Static Tools (for tuning system without load) - df, ip, route, lsblk, lsscsi, swapon, lscpu, lshw, sysctl, lspci, ldd, sysctl
+``
 
 ***Profiling***
  
@@ -93,7 +101,10 @@ Check output of system components for a certain time period to locate the proble
 
 
 * ***Reference Links***
+
 [Brendan Gregg USE method] (http://www.brendangregg.com/usemethod.html)
+
 [Brendan Gregg Video] (https://youtu.be/FJW8nGV4jxY?list=PLwZOquYxKJS5_4UhfSCvOa-89LBuI0IIQ)
+
 [Rickard Nobel] (http://rickardnobel.se/storage-performance-iops-latency-throughput/)
 
