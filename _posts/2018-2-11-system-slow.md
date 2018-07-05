@@ -16,23 +16,25 @@ Investigating a slow performing system
 * Check system resources - provide output of tools displaying output of cpu, ram, disk io, network io performance
 * Ask customer question to quantify the slowness he is facing
 
-Below are the methodologies to resolve system issue.
+Below are the methodologies to localise and identify the cause of the slowness in a system.
 
 * ***Problem Statement Method***
  
 Ask question to customer related to the performance issue - what, when, where, which, changes ?
 
-* What makes you think there is a performance problem ?
+```
+ What makes you think there is a performance problem ?
 
-* Has the system ever performed well ?
+ Has the system ever performed well ?
 
-* What has changed recently - hardware, software, load ?
+ What has changed recently - hardware, software, load ?
 
-* Can the performance degradation be expressed in terms of latency or run time ?
+ Can the performance degradation be expressed in terms of latency or run time ?
 
-* Does the performance affect other people or other application or its just you ?
+ Does the performance affect other people or other application or its just you ?
 
-* What is the environment - hardware, software, instance type, version, configuration ?
+ What is the environment - hardware, software, instance type, version, configuration ?
+```
 
 * ***Workload characterization method***
 
@@ -70,7 +72,7 @@ Each of the system resource writes error messages to a log file which help in in
     Storage devices: IOPS, Capacity, Throughput, Latency 
 ```
     
-To explain the above terms for storage device metrices, I am going to take reference from an article by [Rickard Nobel] (http://rickardnobel.se/storage-performance-iops-latency-throughput/) here is some information in extract from the same article which I feel is important for our explaination.
+To explain the above terms for storage device metrices, I am going to take reference from an article by [Rickard Nobel](http://rickardnobel.se/storage-performance-iops-latency-throughput/) here is some information in extract from the same article which I feel is important for our explaination.
 
 Throughput is usually expressed in Megabytes / Second (MB/s). The maximum throughput for a disk could be for example 170 MB/s.
 
