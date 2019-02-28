@@ -38,13 +38,15 @@ root@test-move:~/test# cat test-move
 test 1 test 1 test 2 test 2
 ```
 
-* Shutdown & take backup of the container 
+* Shutdown & make copy of the container 
 
+```
 root@proxmox1:~$pct stop 120
+```
 
 * Copy the container image to a shared partition
 
-I have a NFS shared partition mounted on all proxmox host. Copying the container image from /var/lib/vz/images/<container id>/container-id.raw to a nfs shared partition
+I have a NFS shared partition mounted on all proxmox host. Copying the container image from /var/lib/vz/images/container-id/container-id.raw to a nfs shared partition
 
 ``` 
 root@proxmox1:/mnt/bkp/images$cp /var/lib/vz/images/120/vm-120-disk-1.raw .
@@ -77,7 +79,7 @@ root@proxmox2:pct stop 160
 root@proxmox2:/var/lib/vz/images$mv 160/vm-160-disk-1.raw /tmp/
 ```
 
-* Copy the raw image from nfs share to /var/lib/vz/images/<container id>
+* Copy the raw image from nfs share to /var/lib/vz/images/container-id/
 
 ```
 root@proxmox2:/var/lib/vz/images/160$cp  /mnt/bkp/images/vm-120-disk-1.raw vm-160-disk-1.raw
@@ -85,7 +87,7 @@ root@proxmox2:/var/lib/vz/images/160$ls
 vm-160-disk-1.raw
 ```
 
-* Copy the configuration file content from nfs share to /etc/pve/nodes/studio/lxc/<container id>.conf
+* Copy the configuration file content from nfs share to /etc/pve/nodes/studio/lxc/container-id.conf
 
 ```
 root@proxmox2:/etc/pve$cat nodes/studio/lxc/160.conf
@@ -129,4 +131,4 @@ root@test-move:~/test# cat test-move
 test 1 test 1 test 2 test 2
 ```
 
-The above procedure can also be used for creating backup of raw image files of the container.
+As the above procedure allows to take backup of raw image files of the container, the same file can be stored as backup of container.
