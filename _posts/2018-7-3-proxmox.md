@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Proxmox"
+date:   2018-7-3
+tags:
+  - proxmox
+  - LXC
+  - Docker
+  - NFS
+  - container
+  - apparmor
+---
+
 Since past few months I have been working on Proxmox container solution which is based of LXC containers. Proxmox is similar to Docker in terms of its containerzation philisophy, but different in terms of how the technology is implemented. Here's a comparision of Docker, LXC and Virtual Machine, this should give some prespective on what I mean in my earlier statement.
 
 |Docker | LXC | VM|
