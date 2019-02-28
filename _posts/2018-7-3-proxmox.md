@@ -191,13 +191,13 @@ mount: wrong fs type, bad option, bad superblock on 192.168.50.4:/home/bkp,
 * Install nfs-common package and then try mount command
 
 
+* ***Reference Links***
 
+[LXC Apparmor](https://forum.proxmox.com/threads/lxc-aa_profile-is-deprecated-and-was-renamed-to-lxc-apparmor-profile.38505/)
 
-https://forum.proxmox.com/threads/lxc-aa_profile-is-deprecated-and-was-renamed-to-lxc-apparmor-profile.38505/
+[LXC - DOCKER](https://unix.stackexchange.com/questions/254956/what-is-the-difference-between-docker-lxd-and-lxc)
 
-https://unix.stackexchange.com/questions/254956/what-is-the-difference-between-docker-lxd-and-lxc
-
-https://www.linkedin.com/pulse/docker-vs-lxc-virtual-machines-phucsi-nguyen
+[LXC - DOCKER - VM](https://www.linkedin.com/pulse/docker-vs-lxc-virtual-machines-phucsi-nguyen)
 
 
 
