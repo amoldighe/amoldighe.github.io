@@ -17,24 +17,29 @@ saltstack is called to build the configuration file for the compute nodes, the p
 Sounds simple, but it's actualy quite complex considering the jenkins configuration and various build scripts playing their part for the deployment. 
 Recently while working with the application team, I came across a deployment requirement which was quite intresting.
 
-## The Requirement
+## Requirement
+
 * Setup a repository sync for a server running node.js code.
+
 * The node js code should run inside forever.
+
 * The forever session should run under a screen session as the terminal output of the screen session is required by the developers.
 
-## The Solution
+## Solution
 
 We will be using our Jenkins server for syncing the code from github repository to the node js server which ia a VPS instance on AWS.
 
 * Prepeare the SCM  
+
 First we need to prepare the Jenkins server to get the code from github using the SCM (Source Code Management) option.
 
 Add the repository under SCM along with an existing or new credential key. 
 
-Add the public key of the keypair as deploy key to repository. (know more about deploy key - https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys)
+Add the public key of the keypair as deploy key to repository. [Click here to know more about deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys)
 
 
 * Run job on Jenkins master
+
 While creating the Jenkins job, we need to specify that, it runs on Master, by selecting "Restrict where this project can be run" under General option and select the "Label Expression" as "master" 
 
 * Configure the SCM 
@@ -42,6 +47,7 @@ While creating the Jenkins job, we need to specify that, it runs on Master, by s
 Under Source Code Management, add the git repository URL and select the key as credential. Jenkins will immediatly try to talk to the git repository and check if it can connect.
 
 We are going to use 'Poll SCM' and select the Schedule to sync and build the repo every hour 
+
 ```
 H * * * *
 ```
@@ -52,11 +58,13 @@ Under "Build Environment" we will be using Binding option to assign a variable (
 
 ```
 rsync -avhpzi -e "ssh -i ${SSHKEY}" --delete --exclude ".git" --exclude "logs" --exclude ".session" ./ "user@node-vps-instance:/home/ubuntu/ReportScript/"
+
 ssh -i "${SSHKEY}" user@node-vps-instance "screen -X -S reportscript quit"
+
 ssh -i "${SSHKEY}" user@node-vps-instance "screen -S reportscript -d -m bash -c 'cd /home/user/nodedata; sudo NODE_ENV=prod forever bin/www'"
 ```
 
-## The Execution -
+## Execution
 
 Lets see what happens when we execute the Jenkins job
 
