@@ -4,6 +4,7 @@ title:  "Using Find & Sed"
 date:   2024-7-30
 tags:
   - find
+  - sed
   - linux
   - command
   - ubuntu
