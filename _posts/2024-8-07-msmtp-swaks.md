@@ -17,7 +17,7 @@ One of the qiuckest way is to use an SMTP client & SMTP server which take care o
 
 ### MSMTP 
 
-Download & Install msmtp - https://marlam.de/msmtp/download/
+Download & Install msmtp - [https://marlam.de/msmtp/download/](https://marlam.de/msmtp/download/)
 It is also available as a package in Debian repository, please check for your distro.
 
 ```
@@ -43,7 +43,7 @@ root@my-prod-5:~# echo "Hello, World!" | mail -s "Hello Test" recipient@amoldigh
 
 ### Swaks (Swiss Army Knife for SMTP)
 
-Recently I came across this wonderful command line tool for forwarding emails via SMTP - SWAKS http://www.jetmore.org/john/code/swaks/
+Recently I came across this wonderful command line tool for forwarding emails via SMTP - SWAKS [http://www.jetmore.org/john/code/swaks/](http://www.jetmore.org/john/code/swaks/)
 It's caled the Swiss Army Knife for SMTP as it is a single command line package that handles SMTP configuration + sending of email.
 
 
