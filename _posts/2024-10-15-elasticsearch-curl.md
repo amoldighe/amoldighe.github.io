@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Elasticsearch Cheatsheet using CURL"
-date:   2024-7-21
+date:   2024-10-15
 tags:
   - elk
   - elasticsearch
