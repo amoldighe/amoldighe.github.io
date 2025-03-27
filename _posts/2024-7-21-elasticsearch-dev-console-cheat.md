@@ -145,38 +145,7 @@ PUT _cluster/settings
   }
 }
 ```
-### Insert data into Elasticsearch via CURL
-```
-curl -XPOST 'http://kibana_url:9200/test_index-test/_doc' \                            
-\ -H 'Content-Type: application/json' \
-\ -u user:password \
-\ -d '{
-    "field1": "value1",
-    "field2": "value2"
-  }'
-```
 
-### Stop / Start cluster rebalancing via CURL
-```
-curl -X PUT http://ES IP:9200/_cluster/settings -H "Content-Type: application/json" -d'
-    {
-      "transient": {
-        "cluster.routing.allocation.enable": "none"
-      }
-    }
-
-curl -X GET http://ES IP:9200/_cluster/settings
-
-curl -X POST http://ES IP:9200/_flush/synced
-
-
-curl -X PUT http://ES IP:9200/_cluster/settings -H "Content-Type: application/json" -d'
-    {
-      "transient": {
-        "cluster.routing.allocation.enable": "all"
-      }
-    }'
-```
 
 
 
