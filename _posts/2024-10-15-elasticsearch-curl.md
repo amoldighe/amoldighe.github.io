@@ -10,7 +10,7 @@ tags:
   - deploy-keys
   - index
   - deploy
-  -curl
+  - curl
 ---
 
 
