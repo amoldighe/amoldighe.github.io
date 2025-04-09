@@ -51,7 +51,7 @@ PUT _snapshot/es_backup/my_snapshot
 
 This will run a snapshot process in background 
 
-* status of a snapshot process 
+* Status of a snapshot process 
 
 ```
 GET _snapshot/my_repository/_current
@@ -84,13 +84,13 @@ POST /_snapshot/es_backup/snapshot20190502/_restore
 
 ### Reindex to a remote cluster
 
-* White list the remote host in elasticsearch.yml 
+* Whitelist the remote host in elasticsearch.yml 
 
 ```
 reindex.remote.whitelist: "otherhost:9200"
 ```
 
-* start index copying from Kibana - DevTool console
+* Start the reindex process
 
 ```
 POST _reindex
@@ -117,7 +117,7 @@ POST _reindex
 
 ### Dump Elasticsearch index data as JSON file
 
-* Download elasticsearch-dump docker container from https://hub.docker.com/r/elasticdump/elasticsearch-dump/
+* Download elasticsearch-dump docker container from [https://hub.docker.com/r/elasticdump/elasticsearch-dump/](https://hub.docker.com/r/elasticdump/elasticsearch-dump/)
 
 ```
 ~ » docker pull elasticdump/elasticsearch-dump                                                                         
