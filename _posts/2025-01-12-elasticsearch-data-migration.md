@@ -19,15 +19,18 @@ tags:
 
 ### Snapshot & Restore 
 
-Snapshot feature in Elasticsearch allows taking backup of complete Elasticsearch cluster data
-Consiqutive backups are incremental snapshots
+Snapshot feature in Elasticsearch allows taking backup of complete Elasticsearch cluster data.
+
+Consecutive backups are incremental snapshots
 
 
 * Define the snapshot repository path 
+
 ```
 vi /etc/elasticsearch/elasticsearch.yml
    path.repo: /mnt/esbackup/es_backup
 ```
+
 * Register a snapshot repository 
 
 ```
@@ -39,26 +42,33 @@ PUT /_snapshot/es_backup
   }
 }
 ```
+
 * Create an snapshot manually 
+
 ```
 PUT _snapshot/es_backup/my_snapshot
 ```
+
 This will run a snapshot process in background 
 
 * status of a snapshot process 
+
 ```
 GET _snapshot/my_repository/_current
 
 GET _snapshot/_status
 ```
+
 * List the snapshots available on the data path
 
 ```
 GET _snapshot/es_backup/_all
 ```
+
 This will list the snapshot name & the indices name
 
 * Restore an indes from snapshot
+
 ```
 POST /_snapshot/es_backup/snapshot20190502/_restore
 {
@@ -75,11 +85,13 @@ POST /_snapshot/es_backup/snapshot20190502/_restore
 ### Reindex to a remote cluster
 
 * White list the remote host in elasticsearch.yml 
+
 ```
 reindex.remote.whitelist: "otherhost:9200"
 ```
 
 * start index copying from Kibana - DevTool console
+
 ```
 POST _reindex
 {
@@ -125,6 +137,7 @@ docker.io/elasticdump/elasticsearch-dump:latest
 ```
 
 * Run the docker container to backup the required INDEX 
+
 ```
 ~ » docker run --rm -ti -v /Users/amol/ES_DATA:/tmp elasticdump/elasticsearch-dump \                                           
 \ --input=http://<ES CLUSTER DNS>:9200/INDEX-2025.03.25 \
@@ -137,6 +150,7 @@ Wed, 26 Mar 2025 12:21:17 GMT | got 0 objects from source elasticsearch (offset:
 Wed, 26 Mar 2025 12:21:17 GMT | Total Writes: 14
 Wed, 26 Mar 2025 12:21:17 GMT | dump complete
 ```
+
 * Once index backup is complete, the container shutsdown. 
 Backup is available on the system mounted path
 
