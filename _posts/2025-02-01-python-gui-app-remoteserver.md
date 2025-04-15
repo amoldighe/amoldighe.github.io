@@ -15,7 +15,7 @@ tags:
 
 
 One recent usecase of a python developer was to run a GUI application on a cloud server. The application was displaying stock market metrics from multiple sources on this python dashboard. 
-Our application servers were running Ubuntu 22.04 server edition, we employed the below approch to run a quick X server test for the requirement. 
+Our application servers were running Ubuntu 22.04 server edition, we employed the below approch to run a quick X server test for this requirement. 
 
 * Run a headless X server & connect using VNC
 
@@ -25,6 +25,7 @@ Xvfb is effective for most Linux systems without displays.
 ```
 apt install xvfb
 ```
+
 * Start the Xvfb server
 
 ```
@@ -55,7 +56,8 @@ xclock &
 xmessage -center "Hello World" &
 ```
 
-Here I have installed xclock & also sending a message "Hello World" on virtual display.
+Here I have installed xclock & also sending a message "Hello World" on virtual display for test.
 
 * You can connect to the display on the application server on port 5900 using a VNC application from your local machine.
 
+* Both XVFB & XVNC servers can be added to system start up by writing a systemd service.
