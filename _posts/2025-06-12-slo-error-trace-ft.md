@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Data Warehouse vs Data Lake vs Data Lakehouse"
+title:  "SRE Concepts"
 date:   2025-06-12
 tags:
   - SRE
