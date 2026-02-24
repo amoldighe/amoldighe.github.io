@@ -16,7 +16,7 @@ tags:
 ---
 
 
-What is Opensource AI?
+## What is Opensource AI?
 
 A collection of technology & frameworks that is needed to use opensource AI to build systems & applications.
 e.g. build AI agent to book a flight OR shop for the right shoes at the right price point by comparing across multiple shopping websites.
@@ -51,9 +51,9 @@ Choosing the right model is the foundation of any AI system. There are two categ
 
 Before picking a model, consult benchmarks and community rankings to find the best fit for your use case (coding, reasoning, instruction-following, multilingual, etc.):
 
-- https://llm-stats.com/ — Aggregated benchmarks and cost comparison
-- https://openrouter.ai/rankings — Real-world usage and popularity rankings across providers
-- https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/ — HuggingFace Open LLM Leaderboard with standardized evals (MMLU, HellaSwag, ARC, etc.)
+- [llm-stats.com](https://llm-stats.com/) — Aggregated benchmarks and cost comparison
+- [OpenRouter Rankings](https://openrouter.ai/rankings) — Real-world usage and popularity rankings across providers
+- [HuggingFace Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/) — Standardized evals (MMLU, HellaSwag, ARC, etc.)
 
 Key benchmarks to look at:
 - **MMLU** — General knowledge across 57 subjects
@@ -67,7 +67,7 @@ Key benchmarks to look at:
 
 To run and manage open-source models locally, you need a model manager:
 
-**Ollama** (https://ollama.com)
+**[Ollama](https://ollama.com)**
 - Easiest way to download, run, and switch between local LLMs
 - Single command to pull and run: `ollama run llama3`
 
@@ -92,7 +92,7 @@ gemma3      3.88 B      MOSTLY_Q4_K_M  gemma3        a353a8898c9d  5 months ago 
 
 Steps to get a model running locally:
 
-1. **Install Ollama**: Download from https://ollama.com and install
+1. **Install Ollama**: Download from [ollama.com](https://ollama.com) and install
 2. **Pull a model**: `ollama pull qwen3-vl:2b` or `ollama pull deepseek-coder-v2:latest `
 ```
 ~ » ollama list
@@ -120,7 +120,7 @@ Tips:
 
 For no-code / low-code AI agent building:
 
-**n8n** (https://n8n.io) is an open-source workflow automation tool similar to Zapier/Make, but self-hostable and AI-native.
+**[n8n](https://n8n.io)** is an open-source workflow automation tool similar to Zapier/Make, but self-hostable and AI-native.
 
 **Architecture**:
 ```
