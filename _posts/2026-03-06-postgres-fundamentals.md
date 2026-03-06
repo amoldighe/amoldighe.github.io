@@ -14,23 +14,23 @@ tags:
   - WAL
 ---
 
-Having relied on PostgreSQL within a Patroni cluster to power our production Airflow environment for some time, I’ve recently begun exploring the database more deeply. I am consistently impressed by its robust feature set and its widespread reputation across the industry as a truly reliable, enterprise-grade storage solution. This fascination inspired me to pull back the curtain and understand exactly "what is under the hood" and how PostgreSQL actually works. This blog post is the result of that journey, focusing on the essential fundamentals of PostgreSQL architecture and operation.
+Having relied on PostgreSQL within a Patroni cluster to power our production Airflow environment for some time, I’ve recently begun exploring the database more deeply. I am consistently impressed by its robust feature set and its widespread reputation across the industry as a truly reliable, enterprise-grade database solution. This fascination inspired me to pull back the curtain and understand exactly "what is under the hood" and how PostgreSQL actually works. This blog post is the result of that journey, focusing on the essential fundamentals of PostgreSQL architecture and operation.
 
 ## Introduction
-Postgres is a relational database management system (RDBMS). It stores structural data & allows manualtion using SQL. Apart from being a data store it is a transactional, concurrent, extensible data engine built to adher to ACID properties at scale.
+Postgres is a relational database management system (RDBMS). It stores structural data & allows manipulation using SQL. Apart from being a data store it is a transactional, concurrent, extensible data engine built to adhere to ACID properties at scale.
 * Atomicity - All or nothing
 * Consistency - A transaction must bring the database from one valid state to another.
 * Isolation - Concurrent transactions are isolated from each other.
 * Durability - Data is persistent even in case of system failure.
 
-Unlike standard relational databases, Postgres allows for custom data types, inheritance, and complex structures like JSONB and geometric objects and allows ataching methods, operators to them.
+Unlike standard relational databases, Postgres allows for custom data types, inheritance, and complex structures like JSONB and geometric objects and also allows attaching methods, operators to them.
 
 Postgres Architecture is built around a concept of background processes and shared memory.
 
 <img  src="{{ site.baseurl }}/img/postgres-architecture.png">
 
 ## Background Processes
-These are the essential 'housekeeping' processes that keep the system running. The diagram shows the Postmaster handling incoming client connections and spawning individual Backend Processes for each.
+These are the essential 'housekeeping' processes that keep the system running. The diagram shows the Postmaster handling incoming client connections and spawning individual Backend Processes.
 
 ```
 207 pts/0 S+ 0:00 \_ /usr/lib/postgresql/18/bin/psql -U postgres -d n8n
@@ -80,7 +80,7 @@ Maintains a shared table of all database locks (row-level, table-level, etc.); i
 Stores the status and metadata of all currently active backend processes; it is primarily used to generate "snapshots" for MVCC, helping the system decide which data versions are visible to which users at any given moment.
 
 ## Storage
-Postgres seperates logics of how querries are executed from the storage i.e. how data is stored on disk.
+Postgres seperates logics of how querries are executed and storage i.e. how data is stored on disk.
 
 On disk, PostgreSQL organizes data into a specific hierarchy designed for reliability and fast retrieval. Here is a breakdown of the primary storage structures:
 
