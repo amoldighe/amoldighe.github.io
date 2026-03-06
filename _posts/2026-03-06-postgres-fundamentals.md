@@ -46,6 +46,7 @@ These are the essential 'housekeeping' processes that keep the system running. T
 238 ? Ss 0:00 postgres: postgres postgres [local] idle
 
 ```
+
 | Process | Action Performed |
 | --- | --- |
 | **Postmaster** | Listens for new connection requests and spawns a dedicated backend process for each client. |
@@ -58,6 +59,7 @@ These are the essential 'housekeeping' processes that keep the system running. T
 | **Stats Collector** | Aggregates and records runtime information about table access, index usage, and row counts. |
 | **Archiver** | Copies completed WAL segment files to a secure backup storage location for point-in-time recovery. |
 | **Logger** | Captures system error messages and performance events and writes them to the database log files. |
+
 
 ## Shared memory
  Shared memory is the critical communication highway in PostgreSQL, allowing various background processes to access and update data without constant disk I/O.
