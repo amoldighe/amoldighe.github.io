@@ -113,11 +113,13 @@ A simple map that tracks which pages in a table contain only "frozen" (all-visib
 MVCC is the engine that allows multiple users to read and write to the same table simultaneously without locking each other out. The core philosophy is: "Readers never block writers, and writers never block readers." Here is how it works at the transaction level:
 
  **The "No Overwrite" Rule**
+
 Unlike other databases that might update a row in place, Postgres never overwrites existing data. 
 - When you UPDATE a row, Postgres marks the old version as "obsolete" and inserts a completely new version (a new tuple) into the table. 
 - When you DELETE a row, it simply marks the    row as "deleted" but leaves it on the disk for a while.
 
 **Transaction IDs (xmin and xmax)**
+
 Every row (tuple) on the disk has two hidden "bookkeeping" columns that manage visibility:
 - xmin: The ID of the transaction that created (inserted) the row.
 - xmax: The ID of the transaction that deleted or updated the row. If the row hasn't been deleted, xmax is 0.
@@ -128,12 +130,14 @@ Every row (tuple) on the disk has two hidden "bookkeeping" columns that manage v
 - The Result: If User A is updating a row but hasn't clicked "Commit" yet, User B can still read the old version of that row. User B is essentially looking at a "version" of the database from a point in the past.
 
 **Row Visibility Flow**
+
 To determine if a row is visible to your current transaction, Postgres follows these basic rules:
 - Is xmin committed? If no, the row is invisible (it’s from a future or failed transaction).
 - Is xmax zero or uncommitted? If yes, the row is still valid and visible.
 - Is xmax committed? If yes, the row is "dead" (deleted) and invisible to you, because a transaction finished deleting it before you looked.
 
 **The Cleanup (Vacuum)**
+
 Because every update creates a new version, the database would eventually run out of disk space. This "clutter" is called Bloat. The Autovacuum process periodically scans the table. It looks for rows where the xmax is so old that no active transaction could possibly need to see it anymore. It then clears those rows so the space can be reused for new data.
 
 <img  src="{{ site.baseurl }}/img/postgres-wal.png">
@@ -142,15 +146,18 @@ Because every update creates a new version, the database would eventually run ou
 WAL is the fundamental mechanism that guarantees database durability (the 'D' in ACID). Its core philosophy can be summarized in one rule: "No change to data files is ever made until a description of that change has been written to the log and flushed to permanent storage." Here is a conceptual breakdown of how WAL works:
 
 **The Problem: Memory vs. Disk Speed**
+
 To make databases fast, PostgreSQL does most of its work (reading, inserting, updating data) in memory (the Shared Buffer Pool). Writing data sequentially to a log file on disk is much faster than jumping around randomly updating massive data files. If the database crashed while changes were only in memory, those changes would be lost. WAL solves this.
 
 **The Solution: Log It First**
+
 When a transaction performs an action (e.g., UPDATE users SET age = 30 WHERE id = 1):
 - PostgreSQL first modifies the data in memory (creating a "dirty page").
 - Before the change is written to the main data files, a description of the change (a "WAL record") is constructed.
 - This WAL record is written sequentially into the WAL Buffer in memory.
 
 **The WAL Writer and Durability**
+
 The key moment for durability happens during a COMMIT:
 - When the application issues a COMMIT command, the transaction cannot be considered "complete" until its corresponding WAL records are safely on disk.
 - The dedicated WAL Writer process is responsible for flushing WAL records from the memory buffer into sequential WAL segments on physical storage.
