@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Postgres Fundamentals"
+title:  "Postgres Fundamentals - The Concept"
 date:   2026-03-06
 tags:
   - Postgres
