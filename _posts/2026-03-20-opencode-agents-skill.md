@@ -16,7 +16,7 @@ Opencode is an open-source AI agent designed to help plan, implement, debug, and
 
 Opencode supports a wide variety of state-of-the-art AI models—from proprietary giants like Claude, OpenAI, and Gemini, to powerful locally-hosted models. Through its modular architecture of "Agents" and "Skills," developers can seamlessly create and share highly specialized workflows that are perfectly tailored to their specific tech stacks and organizational standards.
 
-Install Opencode - https://opencode.ai/
+Install Opencode - [https://opencode.ai/](https://opencode.ai/)
 
 In **OpenCode**, agents are specialized AI assistants configured to handle specific tasks, workflows, and operations throughout the code  development lifecycle. Instead of using a single monolithic AI for everything, OpenCode allows developers to define and use multiple targeted agents that possess custom prompts, utilize different underlying AI models, and have explicitly defined tool access.
 
@@ -86,8 +86,21 @@ I ran the above Coding Review agent on a python project using one of Opencode fr
 ## 4. Collaboration and "Skills"
 Agents in OpenCode can collaborate with one another, handing off tasks when specialized knowledge is needed. Furthermore, OpenCode incorporates **Agentic Skills**—reusable instructions and capability modules that you can attach to an agent. This teaches the agent exactly how to handle specialized frameworks, specific codebases, or distinct organizational patterns without having to rewrite custom prompts every time.
 
-I will be exploring more on skills.
+Skills allows Opencode to act as an specialist in specific areas. Without skills, every conversation starts from zero. You explain the same conventions and correct the same mistakes. Every morning, back to zero.
 
-In short, OpenCode agents act as a modular, autonomous engineering team living within your terminal or IDE, each precisely tailored to perform specific development duties efficiently.
+Here an example plan writing skill add to Opencode agent - [https://github.com/obra/superpowers/blob/main/skills/writing-plans/SKILL.md](https://github.com/obra/superpowers/blob/main/skills/writing-plans/SKILL.md)
+
+```
+(base)  ~/.opencode/skills/writing-plan/ ls -lth
+total 24
+-rw-r--r--@ 1 amol.di  staff   1.7K 21 Mar 01:11 plan-document-reviewer-prompt.md
+-rw-r--r--@ 1 amol.di  staff   5.3K 21 Mar 00:55 SKILL.md
+```
+
+In Opencode the required skill needs to be loaded before use.
+
+<img  src="{{ site.baseurl }}/img/opencode-skill.png">
+
+In short, OpenCode agents and skills act as a modular, autonomous engineering team living within your terminal or IDE, each precisely tailored to perform specific development duties efficiently.
 
 
