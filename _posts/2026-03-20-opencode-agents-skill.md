@@ -7,11 +7,13 @@ tags:
   - Agents
   - AI
   - Development
+  - Skills
 ---
 
 In the rapidly evolving landscape of AI-assisted software development, **OpenCode** has emerged as a significant player, particularly with its focus on **agents** and **skills**. This post delves into what these components are, how they function within the OpenCode ecosystem, and why they matter for developers looking to leverage AI more effectively.
 
-What is OpenCode?
+**What is OpenCode?**
+
 Opencode is an open-source AI agent designed to help plan, implement, debug, and refactor entire codebases autonomously. Unlike traditional coding assistants that only autocomplete code or generate passive snippets in a chat window, OpenCode operates primarily through a continuous "agentic loop." This means it can actively explore your file system, execute terminal commands, and modify code independently to achieve a complex goal. 
 
 Opencode supports a wide variety of state-of-the-art AI models—from proprietary giants like Claude, OpenAI, and Gemini, to powerful locally-hosted models. Through its modular architecture of "Agents" and "Skills," developers can seamlessly create and share highly specialized workflows that are perfectly tailored to their specific tech stacks and organizational standards.
@@ -23,7 +25,9 @@ In **OpenCode**, agents are specialized AI assistants configured to handle speci
 Here is a breakdown of how agents in OpenCode work:
 
 ## 1. Types of Agents
+
 - **Primary Agents**: These are the main assistants you interact with directly in your workflow. Standard examples include the **"Build"** agent (a full-access AI for writing, modifying, and executing code) and the **"Plan"** agent (a read-only AI used for code analysis, architecture design, and exploration).
+
 - **Subagents**: These are specialized "worker" assistants that primary agents can seamlessly invoke when they encounter a specific or complex sub-task (e.g., a subagent dedicated purely to advanced web searching or analyzing specific logs).
 
 ## 2. Tools and Automation (The Agentic Loop)
@@ -40,7 +44,7 @@ Agents are highly customizable and can be configured using an `opencode.json` fi
 - The **AI Model** they use (OpenCode is provider-agnostic and prevents vendor lock-in, supporting Claude, OpenAI, Gemini, or locally hosted open-source models).
 - The **Temperature** (controlling how creative or deterministic the agent's output is).
 
-An OpenCode custom agent is essentially a Markdown file (.md) containing a YAML front matter contaning metadata such as name, description, mode (primary/sub), model, temperature, and tool access (e.g., bash: false, write: true) and instructions.
+An OpenCode custom agent using a Markdown file (.md) containing a YAML front matter contaning metadata such as name, description, mode (primary/sub), model, temperature, and tool access (e.g., bash: false, write: true) and instructions.
 
 example of an agent in opencode:
 ```yaml
@@ -78,7 +82,7 @@ Implement applications with focus on:
 - Security consideration
 ```
 
-I ran the above Coding Review agent on a python project using one of Opencode free model and it gave me the following output:
+Running the above Coding Review agent on a python project using one of Opencode free model gave the following output:
 
 <img  src="{{ site.baseurl }}/img/opencode-coding-review.png">
 
