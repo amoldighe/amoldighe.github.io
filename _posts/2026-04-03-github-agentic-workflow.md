@@ -41,9 +41,8 @@ A workflow consists of one or more jobs. Each job contains a series of individua
 
 A runner is a server (usually a virtual machine) that is responsible for executing the steps defined in a job. GitHub automatically provisions a runner for each job based on the runs-on configuration specified in the YAML file. Users can access real-time logs, outputs, and artifacts for every step executed on a runner through the GitHub UI.
 
-Here's a simple example of a GitHub Actions workflow:
+Here's a simple example of a GitHub Actions workflow - [https://github.com/amoldighe/pytest/blob/main/.github/workflows/python-test.yaml](https://github.com/amoldighe/pytest/blob/main/.github/workflows/python-test.yaml)
 
-https://github.com/amoldighe/pytest/blob/main/.github/workflows/python-test.yaml
 
 **How Github Events Associate with GitHub Actions**
 
@@ -71,7 +70,7 @@ Instead we will implement the agentic workflow using Github Actions and Openrout
 
 I am setting up a workflow which will be triggered when a pull request is opened or updated. It uses github action to get the diff of the pull request and then sends it to the openrouter API for review. The review is then posted as a comment on the pull request. 
 
-The workflow YAML - https://github.com/amoldighe/pytest/blob/main/.github/workflows/pr-review.yaml leverages [DiffGuard AI PR Review](https://github.com/marketplace/actions/diffguard-ai-pr-review) action from github marketplace. 
+The workflow YAML - [https://github.com/amoldighe/pytest/blob/main/.github/workflows/pr-review.yaml](https://github.com/amoldighe/pytest/blob/main/.github/workflows/pr-review.yaml) leverages [DiffGuard AI PR Review](https://github.com/marketplace/actions/diffguard-ai-pr-review) action from github marketplace. 
 
 ```
       - name: AI PR Review
@@ -97,6 +96,6 @@ Here's a sample output of the PR review analyzed using model google/gemma-3-27b-
 
 <img  src="{{ site.baseurl }}/img/github-actions-pr.png">
 
-Details can be viewed on this PR - https://github.com/amoldighe/pytest/pull/6
+Details can be viewed on this PR - [https://github.com/amoldighe/pytest/pull/6](https://github.com/amoldighe/pytest/pull/6)
 
 
