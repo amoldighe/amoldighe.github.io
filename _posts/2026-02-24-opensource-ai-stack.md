@@ -84,6 +84,7 @@ MODEL NAME  PARAMETERS  QUANTIZATION   ARCHITECTURE  MODEL ID      CREATED      
 gemma3      3.88 B      MOSTLY_Q4_K_M  gemma3        a353a8898c9d  5 months ago           2.31 GiB
 ```
 - Exposes OpenAI-compatible API endpoint locally
+
 ```
 (base)  ~/ curl http://localhost:12434/v1/models
 
@@ -97,7 +98,6 @@ gemma3      3.88 B      MOSTLY_Q4_K_M  gemma3        a353a8898c9d  5 months ago 
   }'
 
 {"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"I'm Gemma, a large language model created by the Gemma team at Google DeepMind. I'm an open-weights model, which means I’m widely available for public use! \n\nI can take text and images as inputs and respond with text. \n\nIt’s nice to meet you!"}}],"created":1775723162,"model":"model.gguf","system_fingerprint":"b1-0988acc","object":"chat.completion","usage":{"completion_tokens":65,"prompt_tokens":12,"total_tokens":77,"prompt_tokens_details":{"cached_tokens":0}},"id":"chatcmpl-0urCVAwxCjdfxOEOJ0fo2uNR987Am3Em","timings":{"cache_n":0,"prompt_n":12,"prompt_ms":124.101,"prompt_per_token_ms":10.34175,"prompt_per_second":96.69543355815023,"predicted_n":65,"predicted_ms":1414.579,"predicted_per_token_ms":21.762753846153846,"predicted_per_second":45.9500671224442}}%
-
 ```
 
 - Useful if your stack is already containerized
