@@ -20,9 +20,8 @@ Recently I setup a new MacBook Pro, this gave me a chance to revist my command l
 
 ### Install Homebrew
 
-Homebrew allow you to install software on your Mac using the command line.
+[Homebrew](https://brew.sh/) allow you to install software on your Mac using the command line.
 
-https://brew.sh/
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
@@ -41,9 +40,8 @@ Git is a version control system for tracking changes in source code during softw
 
 ### Install oh my zsh
 
-Oh My Zsh is an open-source framework for managing your Zsh configuration. It includes a collection of community-maintained plugins and themes.
+[Oh My Zsh](https://ohmyz.sh/#install) is an open-source framework for managing your Zsh configuration. It includes a collection of community-maintained plugins and themes.
 
-https://ohmyz.sh/#install
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
@@ -89,7 +87,7 @@ I prefer the above `git clone` + `~/.zshrc` approch
 brew install starship
 ```
 
-I will be using an existing preset of startship prompt (https://starship.rs/presets/tokyo-night) which needs Nerd font to be installed. List of all the Nerd fonts can be found here: https://www.nerdfonts.com/font-downloads
+I will be using an existing preset of startship prompt [https://starship.rs/presets/tokyo-night](https://starship.rs/presets/tokyo-night) which needs Nerd font to be installed. List of all the Nerd fonts can be found here: [https://www.nerdfonts.com/font-downloads](https://www.nerdfonts.com/font-downloads)
 
 Here's a quick command to list all the available nerd fonts and install 
 
@@ -109,7 +107,8 @@ To enable this font in iterm2 follow these steps:
 - Go to Preferences -> Profiles -> Text
 - Click on "Change Font" and select "JetBrains Mono Nerd Font"
 
-I like Tokyo Night theme for starship prompt. You can find more presets here: https://starship.rs/presets/ Use starship to import the preset for https://starship.rs/presets/tokyo-night
+I like Tokyo Night theme for starship prompt. You can find more presets here: [https://starship.rs/presets/](https://starship.rs/presets/) 
+Use starship to import the preset for [https://starship.rs/presets/tokyo-night](https://starship.rs/presets/tokyo-night)
 
 ```
 starship preset tokyo-night -o ~/.config/starship.toml
@@ -117,13 +116,13 @@ starship preset tokyo-night -o ~/.config/starship.toml
 
 ### Install carapace
 
-Carapace is a shell completion generator for commands. It allows you to generate completion scripts for your shell. You can find details of carapace here: https://carapace.sh/
+[Carapace](https://carapace.sh/) is a shell completion generator for commands. It allows you to generate completion scripts for your shell.
 
 ```
 brew install carapace
 ```
 
-Setup carapace to work with zsh - https://carapace-sh.github.io/carapace-bin/setup.html#zsh
+Setup carapace to work with zsh - [https://carapace-sh.github.io/carapace-bin/setup.html#zsh](https://carapace-sh.github.io/carapace-bin/setup.html#zsh)
 
 Edit `.zshrc` file and add the following lines:
 
@@ -138,7 +137,7 @@ source <(carapace _carapace)
 
 ### Install fzf
 
-fzf is a general-purpose command-line fuzzy finder. You can find more information about it here: https://github.com/junegunn/fzf
+[fzf](https://github.com/junegunn/fzf) is a general-purpose command-line fuzzy finder.
 
 ```
 brew install fzf
@@ -146,7 +145,7 @@ brew install fzf
 
 ### Install tmux 
 
-tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
+[tmux](https://github.com/tmux/tmux) is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
 
 ```
 brew install tmux
