@@ -67,3 +67,47 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/clean-blog.min.js " | prepend: site.baseurl }}"></script>
+
+<!-- Mermaid JS Integration -->
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all elements matching potential mermaid blocks
+        const blocks = document.querySelectorAll('div.language-mermaid, pre.language-mermaid, code.language-mermaid');
+        
+        // Filter out elements that are nested inside other selected mermaid containers
+        const topLevelBlocks = Array.from(blocks).filter(block => {
+            const parentContainer = block.parentElement.closest('div.language-mermaid, pre.language-mermaid');
+            return !parentContainer;
+        });
+
+        if (topLevelBlocks.length > 0) {
+            import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(({ default: mermaid }) => {
+                topLevelBlocks.forEach(block => {
+                    let code = '';
+                    const codeElement = block.querySelector('code') || (block.tagName === 'CODE' ? block : null);
+                    if (codeElement) {
+                        code = codeElement.innerText;
+                    } else {
+                        code = block.innerText;
+                    }
+                    
+                    const mermaidDiv = document.createElement('div');
+                    mermaidDiv.className = 'mermaid';
+                    mermaidDiv.textContent = code.trim();
+                    
+                    // Replace the original block in DOM
+                    block.parentNode.replaceChild(mermaidDiv, block);
+                });
+                
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'default',
+                    securityLevel: 'loose'
+                });
+                mermaid.run();
+            }).catch(err => {
+                console.error("Failed to load Mermaid.js:", err);
+            });
+        }
+    });
+</script>
