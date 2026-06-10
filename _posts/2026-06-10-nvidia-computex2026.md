@@ -1,3 +1,24 @@
+---
+layout: post
+title: "NVIDIA Computex 2026 Keynote Highlights"
+date: 2026-06-10
+tags:
+  - NVIDIA
+  - Computex 2026
+  - RTX Spark
+  - Vera Rubin
+  - DLSS 4.5
+  - Physical AI
+  - Isaac Groot
+  - Alpamayo
+  - ARM
+  - Windows
+  - AI Laptops
+  - Gaming
+  - Data Center
+  - AI Infrastructure
+---
+
 # Nvidia Computex 2026 Keynote Highlights
 
 Exciting announcements we made by NVIDIA CEO Jensen Huang at Computex 2026. We will explore the revolutionary RTX Spark superchip designed specifically for the era of personal AI, uncover the powerful new Vera Rubin AI computing platform and its companion Vera CPU, and look at the latest DLSS 4.5 updates enhancing the gaming and creator ecosystem. Additionally, we’ll touch upon Nvidia's major push into "Physical AI" with robotics platforms like Isaac Groot and Alpamayo, and discuss what these groundbreaking innovations mean for everyday consumers, gamers, and developers alike.
